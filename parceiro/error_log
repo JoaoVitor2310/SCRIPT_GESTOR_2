@@ -1,0 +1,9 @@
+[20-Mar-2022 13:34:26 America/Sao_Paulo] PHP Notice:  Undefined property: stdClass::$access_token in /home/siteiptv/gestormaster/parceiro/pages/renew_mp.php on line 47
+[20-Mar-2022 13:34:26 America/Sao_Paulo] PHP Notice:  Undefined property: stdClass::$expires_in in /home/siteiptv/gestormaster/parceiro/pages/renew_mp.php on line 48
+[20-Mar-2022 13:34:26 America/Sao_Paulo] PHP Notice:  Undefined property: stdClass::$user_id in /home/siteiptv/gestormaster/parceiro/pages/renew_mp.php on line 49
+[20-Mar-2022 13:34:26 America/Sao_Paulo] PHP Notice:  Undefined property: stdClass::$refresh_token in /home/siteiptv/gestormaster/parceiro/pages/renew_mp.php on line 50
+[20-Mar-2022 13:34:26 America/Sao_Paulo] PHP Notice:  Undefined property: stdClass::$public_key in /home/siteiptv/gestormaster/parceiro/pages/renew_mp.php on line 51
+[01-Jun-2022 18:14:10 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/siteiptv/gestormaster/parceiro/pages/sair.php on line 3
+[01-Jun-2022 18:15:41 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/siteiptv/gestormaster/parceiro/pages/financeiro.php on line 124
+[01-Jun-2022 18:15:41 America/Sao_Paulo] PHP Notice:  Undefined offset: 1 in /home/siteiptv/gestormaster/parceiro/pages/financeiro.php on line 152
+[01-Jun-2022 18:18:45 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/siteiptv/gestormaster/parceiro/pages/sair.php on line 3

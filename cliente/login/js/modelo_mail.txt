@@ -1,0 +1,15 @@
+*SUA CONTA FOI CRIADA COM SUCESSO!*
+
+Olá {nome_cliente}, sua conta foi criada com sucesso, e agora você pode desfrutar de todos os benefícios de nossa plataforma.
+
+Aqui estão os dados para que possa acessar sua conta:
+
+Email: {email}
+Senha: {senha} 
+
+Você pode acessar a área do cliente através deste link:
+{link_panel}
+
+Qualquer dúvida, entre em contato com seu vendedor/fornecedor!
+
+Obrigado!
