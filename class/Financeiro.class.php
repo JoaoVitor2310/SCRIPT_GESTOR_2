@@ -976,17 +976,17 @@ class Financeiro extends Conn
           
           /*Somar entrada*/
           if ($mov->tipo == 1) {
-            $valor_m_atual_p = $valor_m_atual_p + self::convertMoney(1, $mov->valor);
+            $valor_m_atual_p += self::convertMoney(1, $mov->valor);
           } else if ($mov->tipo == 2) {
             /*Somar saida*/
-            $valor_m_atual_n = $valor_m_atual_n + self::convertMoney(1, $mov->valor);
+            $valor_m_atual_n += self::convertMoney(1, $mov->valor);
           }
           
         }
         
-        return $valor_m_atual_p . '|' . '2,22';
+        // return $valor_m_atual_p . '|' . '2,22';
       }
-      return self::convertMoney(2, $valor_m_atual_p) . '|' . self::convertMoney(2, $valor_m_atual_n); // Aqui está o problema
+      return self::convertMoney(2, $valor_m_atual_p) . '|' . self::convertMoney(2, $valor_m_atual_n); // O problema estava qnd o vendedor inseria novo valor, pois entrava com "R$" na string de valor e quebrava tudo
       
     } else {
       return '0,00|0,00';

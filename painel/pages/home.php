@@ -1100,7 +1100,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
               <div class="form-group">
                 <textarea data-emojiable="true" data-emoji-input="unicode" placeholder="Texto da mensagem"
-                  class="form-control textarea-control" rows="10" id="texto_to"></textarea>
+                  class="emoji-wysiwyg-editor form-control textarea-control" rows="10" id="texto_to"></textarea>
               </div>
             </div>
 
@@ -1255,8 +1255,11 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                 } ?> type="checkbox" id="vencimento_flex_status" name="vencimento_flex_status"
                   class="custom-control-input">
                 <input type="hidden" id="status_vencimento_flex" value="<?= $user->vencimento_flex; ?>" />
-                <label class="custom-control-label" for="vencimento_flex_status">Vencimentos Flexíveis</label> | <a
-                  href="https://youtu.be/FmI-DDg96ZQ" target="_blank"><i class="fa fa-question"></i></a>
+                <label class="custom-control-label" for="vencimento_flex_status">Vencimentos Flexíveis</label> 
+                <!-- |  -->
+                <!-- <a
+                  href="https://youtu.be/FmI-DDg96ZQ" target="_blank"><i class="fa fa-question"></i>
+                </a> -->
               </div>
             </div>
             <div class="col-auto my-1">

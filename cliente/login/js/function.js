@@ -48,6 +48,15 @@
 
  }
 
+ $(document).ready(function() {
+  $('#email').on('input', function(e) {
+      // Remove espaços da entrada do usuário
+      $(this).val(function(_, value) {
+          return value.replace(/\s/g, '');
+      });
+  });
+});
+
 
  function create(){
      

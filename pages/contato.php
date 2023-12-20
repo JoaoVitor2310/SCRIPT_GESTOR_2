@@ -75,7 +75,7 @@
 
 	<!-- Header section -->
 	<header class="header-section">
-		<a href="" class="site-logo"><img width="100" src="./img/logo.png" alt=""></a>
+		<a href="https://gestormaster.top" class="site-logo"><img width="100" src="./img/logo.png" alt=""></a>
 		<div class="nav-switch">
 			<i class="fa fa-bars"></i>
 		</div>
@@ -100,7 +100,7 @@
 			<div class="section-title">
 				<p>Gestor Master</p>
 				<h3>Entre em contato conosco</h3>
-				<h5>+55 22 99854-2012</h5>
+				<!-- <h5>+55 22 99854-2012</h5> -->
 			</div>
 			<div class="row">
 			    <div class="col-md-12 text-center" >

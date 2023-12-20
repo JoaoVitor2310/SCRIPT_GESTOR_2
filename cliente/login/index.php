@@ -115,7 +115,7 @@
 
 					<input type="hidden" name="painel_cliente" id="painel_cliente" value="<?= $_SESSION['PAINEL']['slug']; ?>">
 
-					<div class="wrap-input100 validate-input" data-validate = "Digite um email valido tipo: bolsonaro@gov.br">
+					<div class="wrap-input100 validate-input" data-validate = "Digite um email valido, exemplo: exemplo@gmail.com.br">
 						<input class="input100" type="text" name="email" value="<?php if(isset($_SESSION['email_login'])){ echo $_SESSION['email_login']; }?>" id="email" placeholder="Digite seu email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">

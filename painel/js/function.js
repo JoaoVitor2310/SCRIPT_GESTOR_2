@@ -533,6 +533,43 @@ function modal_edite_plano(a) {
     }), $("#modal_edite_plano").modal("show")
 }
 
+$(document).ready(function() {
+    $('#email_cli_add').on('input', function(e) {
+        // Remove espaços da entrada do usuário
+        $(this).val(function(_, value) {
+            return value.replace(/\s/g, '');
+        });
+    });
+});
+
+
+$(document).ready(function() {
+    $('#email_cli').on('input', function(e) {
+        // Remove espaços da entrada do usuário
+        $(this).val(function(_, value) {
+            return value.replace(/\s/g, '');
+        });
+    });
+});
+
+$(document).ready(function() {
+    $('#senha_add').on('input', function(e) {
+        // Remove espaços da entrada do usuário
+        $(this).val(function(_, value) {
+            return value.replace(/\s/g, '');
+        });
+    });
+});
+
+$(document).ready(function() {
+    $('#senha_cli').on('input', function(e) {
+        // Remove espaços da entrada do usuário
+        $(this).val(function(_, value) {
+            return value.replace(/\s/g, '');
+        });
+    });
+});
+
 function preview_zap_planos() {
     var a = $("#template_zap").val(),
         e = $("#valor_plano_edit").val(),
@@ -596,7 +633,9 @@ function del_plano() {
 function add_mov() {
     $("#btn_add_mov").prop("disabled", !0), $("#btn_add_mov").html('<i class="fa fa-spinner fa-spin"></i> Aguarde');
     var a = new Object;
-    a.valor = $("#valor_mov_add").val(), a.hora = $("#hora_mov_add").val(), a.data = $("#data_mov_add").val(), a.tipo = $("#tipo_mov_add").val(), a.nota = $("#nota_mov_add").val();
+    let valorMov = $("#valor_mov_add").val();
+    valorMov = valorMov.replace('R$', '').trim();
+    a.valor = valorMov, a.hora = $("#hora_mov_add").val(), a.data = $("#data_mov_add").val(), a.tipo = $("#tipo_mov_add").val(), a.nota = $("#nota_mov_add").val();
     var e = JSON.stringify(a);
     $.post("../control/control.movimentacao_financeiro.php", {
         dados: e
