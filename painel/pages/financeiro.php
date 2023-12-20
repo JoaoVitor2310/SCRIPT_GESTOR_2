@@ -21,8 +21,10 @@
      $movimentacao = $financeiro_class->list($_SESSION['SESSION_USER']['id']);
    }
 
+   // Por aqui que está o erro
    $val = $financeiro_class->soma_mes_atual($_SESSION['SESSION_USER']['id']);
-   $valores_mov  = explode('|',$val);
+   $valores_mov  = explode('|',$val); // Mes atual: entrada[0] e saída[1]
+  //  $valores_mov  = 'controlf';
 
    // soma caixa atual
    $cx_at = ( $financeiro_class->convertMoney(1,$valores_mov[0]) - $financeiro_class->convertMoney(1,$valores_mov[1]) );
@@ -78,6 +80,7 @@
 
                           <div class="row">
                               <div class="col-md-6">
+                                <!-- <h4>$cx_at EM PROGRESSO</h4> -->
                                 <h4><?= $moeda->simbolo; ?> <?= $financeiro_class->convertMoney(2,$cx_at); ?></h4>
                               </div>
                               <div class="col-md-6">
@@ -98,7 +101,7 @@
 
                           <div class="row">
                               <div class="col-md-6">
-                                <h4><?= $moeda->simbolo; ?> <?= $valores_mov[0]; ?></h4>
+                              <h4><?= $moeda->simbolo; ?> <?= $valores_mov[0]; ?></h4>
                               </div>
                               <div class="col-md-6">
                                 <h2 class="text-success" ><i class='fa fa-arrow-up' ></i></h2>
@@ -118,7 +121,7 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                  <h4><?= $moeda->simbolo; ?> <?= $valores_mov[1]; ?></h4>
+                                <h4><?= $moeda->simbolo; ?> <?= $valores_mov[1]; ?></h4>
                                 </div>
                                 <div class="col-md-6">
                                   <h2 class="text-danger" ><i class='fa fa-arrow-down' ></i></h2>
@@ -199,7 +202,7 @@
 
 
                     <tr class="trs " >
-                      <td><?php if($mov->tipo == '2'){ echo '-';} ?> <?= $moeda->simbolo; ?> <?= $mov->valor; ?></td>
+                      <td><?php if($mov->tipo == '2'){ echo '-';} ?> <?= $moeda->simbolo; ?> <?= $mov->valor = str_replace('R$', '', $mov->valor); ?></td>
                       <td><?= $tipo; ?></td>
                       <td><?= $mov->data.' - '.$mov->hora;?></td>
                       <td><a style="cursor:pointer;" class="text-info" onclick="ver_nota_completa(<?= $mov->id; ?>);" ><?= substr($mov->nota,0,20).' <span style="font-size:10px;" >[... ver mais]</span> '; ?></a></td>

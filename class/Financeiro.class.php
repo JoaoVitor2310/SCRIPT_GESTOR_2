@@ -957,22 +957,23 @@ class Financeiro extends Conn
 
   public function soma_mes_atual($user)
   {
-
     $date_explode_at = explode('/', date('d/m/Y'));
     $valor_m_atual_p = 0;
     $valor_m_atual_n = 0;
 
+    // return implode(',', $explode_mov) . '|42,24';
     $query = $this->pdo->query("SELECT * FROM `financeiro` WHERE id_user='$user'");
-
+    
+    
     if ($query) {
-
+      
       while ($mov = $query->fetch(PDO::FETCH_OBJ)) {
-
+        
         $explode_mov = explode('/', $mov->data);
-
+        
         if ($explode_mov[2] == $date_explode_at[2] && $explode_mov[1] == $date_explode_at[1]) {
           // mes e ano atuais
-
+          
           /*Somar entrada*/
           if ($mov->tipo == 1) {
             $valor_m_atual_p = $valor_m_atual_p + self::convertMoney(1, $mov->valor);
@@ -980,12 +981,13 @@ class Financeiro extends Conn
             /*Somar saida*/
             $valor_m_atual_n = $valor_m_atual_n + self::convertMoney(1, $mov->valor);
           }
-
+          
         }
-
+        
+        return $valor_m_atual_p . '|' . '2,22';
       }
-
-      return self::convertMoney(2, $valor_m_atual_p) . '|' . self::convertMoney(2, $valor_m_atual_n);
+      return self::convertMoney(2, $valor_m_atual_p) . '|' . self::convertMoney(2, $valor_m_atual_n); // Aqui está o problema
+      
     } else {
       return '0,00|0,00';
     }
