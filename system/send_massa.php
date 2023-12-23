@@ -112,7 +112,7 @@ ini_set('max_execution_time', 12000);
              $phone = $user->ddi.str_replace($ar1,$ar2,$user->telefone);
              
 
-              $init = file_get_contents('http://62.72.11.236:3333/send?num='.$phone.'&msg='.urlencode($texto));
+              $init = file_get_contents('http://192.99.62.193:3333/send?num='.$phone.'&msg='.urlencode($texto));
              
             
             }

@@ -11,7 +11,7 @@
 
     private $secret    = "";
 
-    private $endpoint  = "62.72.11.236:3333";
+    private $endpoint  = "192.99.62.193:3333";
 
     private $token = "VPSGestorMaster";
 

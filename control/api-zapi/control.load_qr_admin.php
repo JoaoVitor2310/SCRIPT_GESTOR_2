@@ -38,7 +38,7 @@ if (isset($_SESSION['SESSION_USER'])) {
 
   if (isset($_POST['remove'])) {
 
-    file_get_contents("62.72.11.236:3333/close?sessionName=" . $keyantiga);
+    file_get_contents("192.99.62.193:3333/close?sessionName=" . $keyantiga);
 
     $query = "DELETE FROM `whats_api` WHERE id_user='$user_id' AND api='$api' ";
     $pdo->query($query);
@@ -104,7 +104,7 @@ if (isset($_SESSION['SESSION_USER'])) {
     if ($v_device) {
       // update key
 
-      file_get_contents("62.72.11.236:3333/close?sessionName=" . $keyantiga);
+      file_get_contents("192.99.62.193:3333/close?sessionName=" . $keyantiga);
 
       if ($situ == 1) {
 

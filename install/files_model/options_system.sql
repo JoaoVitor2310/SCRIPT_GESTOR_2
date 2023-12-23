@@ -39,7 +39,7 @@ CREATE TABLE `options_system` (
 
 INSERT INTO `options_system` (`id`, `name`, `value`) VALUES
 (4, 'dominio', 'gestormaster.top'),
-(6, 'api_zap_address', 'http://62.72.11.236:3333'),
+(6, 'api_zap_address', 'http://192.99.62.193:3333'),
 (7, 'color_background_admin', '#0d0c0c'),
 (8, 'color_menu_admin', '#9c39ff'),
 (9, 'mod_ligh', '1'),

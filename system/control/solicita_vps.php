@@ -55,7 +55,7 @@ Dominio: *{$dominio}*\n
 {$info}
      ";
      
-    $send_zap = file_get_contents("http://62.72.11.236:3333/send?device=gestorlite&num={$zap_instalador}&msg=".urlencode($texto));
+    $send_zap = file_get_contents("http://192.99.62.193:3333/send?device=gestorlite&num={$zap_instalador}&msg=".urlencode($texto));
      
     $to = $email_instalador;
     $subject = "Solicitação de instalação de VPS";
