@@ -113,7 +113,7 @@
              $idU     = $return->id;
              $idPlano = 6;
 
-             $timestamp      = strtotime('+5 days',strtotime(date('d-m-Y')));
+             $timestamp      = strtotime('+3 days',strtotime(date('d-m-Y')));
              $novoVencimento = date('d/m/Y', $timestamp);
 
              $plano  = $gestor->plano($idPlano);
