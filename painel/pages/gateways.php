@@ -67,7 +67,7 @@
                       <div style="padding:10px;" class="card">
                           <div class="card-head">
                               <h4>Integrar ao Mercado Pago </h4>
-                              <a target="_blank" href="https://www.mercadopago.com.br/developers/panel/credentials/" >Pegar minhas credenciais <i class="fa fa-external-link"></i></a>
+                              <a target="_blank" href="https://www.mercadopago.com.br/settings/account/credentials" >Pegar minhas credenciais <i class="fa fa-external-link"></i></a>
                           </div>
                           <div class="card-body">
                               <div class="form-group">

@@ -53,7 +53,9 @@ if (isset($_POST['id_cli']) && isset($_POST['text_to'])) {
         
         $plano = $planos_c->plano($user->id_plano);
         
-        $link_plano = 'https://' . $gestor_c->get_options("dominio") . '/gmaster/p/' . str_replace('=', '', base64_encode($plano->id));
+        //jay11
+        // $link_plano = 'https://' . $gestor_c->get_options("dominio") . '/gmaster/p/' . str_replace('=', '', base64_encode($plano->id)); // Link que levava pra pagar o plano
+        $link_plano = 'https://cliente.' . $gestor_c->get_options("dominio") . '/clientes_' . $plano->id_user; // Link do vendedor que leva pro cliente logar na sua área.
         
         $ar1 = array('+', ')', '(', ' ', '-');
         $ar2 = array('', '', '', '', '');

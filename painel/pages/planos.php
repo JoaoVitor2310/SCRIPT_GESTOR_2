@@ -255,7 +255,7 @@ Caso tenha esquecido sua senha para login:
 Email: {email_cliente}
 Senha: {senha_cliente}
 
-
+<!-- jay11 -->
 <?php echo 'https://'.$gestor_class->get_options("dominio").'/gmaster/a/'.str_replace('=', '', base64_encode($_SESSION['SESSION_USER']['id'])); ?>
 </textarea>
 <!-- LINK ANTIGO = https://cliente.gestormaster.top/login/  -->

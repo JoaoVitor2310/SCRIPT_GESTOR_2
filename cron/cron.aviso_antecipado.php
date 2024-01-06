@@ -66,7 +66,8 @@ if ($list_users) {
             
           }
           
-          $link_plano = 'https://gestormaster.top/gmaster/p/' . str_replace('=', '', base64_encode($plano->id));
+          // $link_plano = 'https://gestormaster.top/gmaster/p/' . str_replace('=', '', base64_encode($plano->id));
+          $link_plano = 'https://cliente.' . $gestor_c->get_options("dominio") . '/clientes_' . $plano->id_user;
           
           
           $ar1 = array('{senha_cliente}', '{nome_cliente}', '{primeiro_nome_cliente}', '{email_cliente}', '{telefone_cliente}', '{vencimento_cliente}', '{plano_valor}', '{data_atual}', '{plano_nome}', '{plano_link}');
