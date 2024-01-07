@@ -843,7 +843,7 @@
         }
 
 
-        // buscar a quantidade de cleintes que possui
+        // buscar a quantidade de clientes que possui
         $numC = self::count_clientes($dados->id_user);
         $som = $numC+1;
 
