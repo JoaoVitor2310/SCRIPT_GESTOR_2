@@ -48,10 +48,12 @@ if ($list_users) {
           echo "Entrou no if da data <br>";
           
           
+          echo "cliente->id_plano {$cliente->id_plano} <br>";
           $plano = $planos_class->plano($cliente->id_plano);
           
           
           if ($user->gera_fat_cli == 1) {
+            echo "Entrou no if da data user->gera_fat_cli == 1 <br>";
             
             $new_fat_cli = array();
             $new_fat_cli['id_plano'] = $plano->id;
@@ -66,8 +68,8 @@ if ($list_users) {
             
           }
           
-          // $link_plano = 'https://gestormaster.top/gmaster/p/' . str_replace('=', '', base64_encode($plano->id));
-          $link_plano = 'https://cliente.' . $gestor_c->get_options("dominio") . '/clientes_' . $plano->id_user;
+          $link_plano = 'https://gestormaster.top/gmaster/p/' . str_replace('=', '', base64_encode($plano->id));
+          // $link_plano = 'https://cliente.' . $gestor_c->get_options("dominio") . '/clientes_' . $plano->id_user;
           
           
           $ar1 = array('{senha_cliente}', '{nome_cliente}', '{primeiro_nome_cliente}', '{email_cliente}', '{telefone_cliente}', '{vencimento_cliente}', '{plano_valor}', '{data_atual}', '{plano_nome}', '{plano_link}');
@@ -84,11 +86,12 @@ if ($list_users) {
           
 
           if (strlen($phone) > 10) {
-
+            echo "Entrou no if do telefone <br>";
             if ($device) {
-
+              echo "Entrou no if do device <br>";
+              
               $api = $device->api;
-
+              
               if ($device->api == "chatpro") {
                 $device_id = explode('@@@@', $device->device_id)[0];
                 $codigo = explode('@@@@', $device->device_id)[1];
@@ -97,8 +100,9 @@ if ($list_users) {
                 $codigo = "null";
               }
             }
-
+            
             if ($plano) {
+              echo "Entrou no if do plano <br>";
 
               if ($plano->template_zap != "") {
                 echo " Dados para fila: {$phone}, {$text}, {$user->id}, {$device_id}, API: {$api}, {$codigo}, {$cliente->id} <br>";

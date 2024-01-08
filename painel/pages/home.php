@@ -264,7 +264,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                 </option>
               </select>
               <input style="border-radius: 0px!important;" type="text" id="busca_user"
-                placeholder="<?= $idioma->digite_nome_email_ou_telefone; ?>" class="form-control" name="" value="">
+                placeholder="Pesquisar" class="form-control" name="" value="">
             </div>
           </div>
         </div>

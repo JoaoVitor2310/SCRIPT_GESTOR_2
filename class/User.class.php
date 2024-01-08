@@ -59,6 +59,26 @@
 
     }
 
+    public function buscaRevenda($term,$idu){
+
+      $query = "SELECT * FROM `user` WHERE id_rev='$idu' AND (
+        CONVERT(`id` USING utf8) LIKE '%{$term}%' OR
+        CONVERT(`nome` USING utf8) LIKE '%{$term}%' OR
+        CONVERT(`email` USING utf8) LIKE '%{$term}%' OR
+        CONVERT(`telefone` USING utf8) LIKE '%{$term}%' OR
+        CONVERT(`vencimento` USING utf8) LIKE '%{$term}%'
+      )";
+
+    $execute = $this->pdo->query($query);
+    $us1     = $execute->fetchAll(PDO::FETCH_OBJ);
+
+    if(count($us1)>0){
+      return $this->pdo->query($query);
+    }else{
+      return false;
+    }
+
+  }
 
     public function getUserCheck($info){
 

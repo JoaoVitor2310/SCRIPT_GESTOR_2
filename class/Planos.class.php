@@ -61,6 +61,23 @@
 
 
       }
+      
+      public function planoUserGestor($id){
+
+            $query = $this->pdo->query("SELECT * FROM `planos` WHERE id='$id' ");
+            $fetch = $query->fetchAll(PDO::FETCH_OBJ);
+            if(count($fetch)>0){
+
+              $query = $this->pdo->query("SELECT * FROM `planos` WHERE id='$id' ");
+              $fetch = $query->fetch(PDO::FETCH_OBJ);
+              return $fetch;
+
+            }else{
+              return false;
+            }
+
+
+      }
 
 
     public function insert($dados){

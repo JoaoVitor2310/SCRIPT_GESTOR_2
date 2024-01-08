@@ -190,6 +190,8 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, não �
     <div class="row">
       <div class="col-md-12 text-left">
         <h5>Usuários adicionados por revenda</h5>
+        <input style="border-radius: 0px!important;" type="text" id="busca_revenda"
+                placeholder="Pesquisar" class="form-control" name="" value="">
       </div>
     </div>
     <div class="table-responsive">

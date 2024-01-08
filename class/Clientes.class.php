@@ -681,7 +681,7 @@
 
 
       }
-
+      
 
       public function count_clientes($user){
 

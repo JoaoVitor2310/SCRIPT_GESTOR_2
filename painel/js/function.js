@@ -210,7 +210,7 @@ $('#sendImg').submit(function (e) {
 
 
 function renew_cli(a, e) {
-    
+
     var shouldRenew = confirm("Você realmente deseja renovar esse cliente com o mesmo plano?");
 
     if (shouldRenew) {
@@ -489,7 +489,7 @@ function save_cli() {
 function validarNumeros(input) {
     // Remove qualquer caractere não numérico
     input.value = input.value.replace(/\D/g, '');
-  }
+}
 
 function modal_add_cli() {
     $("#modal_add_cli").modal("show")
@@ -499,8 +499,8 @@ function add_cli() {
     $("#btn_add_cli").prop("disabled", !0), $("#btn_add_cli").html('<i class="fa fa-spinner fa-spin"></i> Aguarde');
     var a = new Object;
     a.nome = $("#nome_cli_add").val(),
-    //  a.identificador_externo = $("#identificador_externo_cli_add").val(),
-      a.categoria = $("#categoria_cli_add").val(), a.email = $("#email_cli_add").val(), a.telefone = $("#telefone_cli_add").val(), a.vencimento = $("#vencimento_cli_add").val(), a.notas = $("#notas_cli_add").val(), a.recebe_zap = $("#recebe_zap_add").val(), $("#senha_add").val() ? a.senha = $("#senha_add").val() : a.senha = Math.random().toString(36).substring(0, 7), a.id_plano = $("#plano_cli_add").val();
+        //  a.identificador_externo = $("#identificador_externo_cli_add").val(),
+        a.categoria = $("#categoria_cli_add").val(), a.email = $("#email_cli_add").val(), a.telefone = $("#telefone_cli_add").val(), a.vencimento = $("#vencimento_cli_add").val(), a.notas = $("#notas_cli_add").val(), a.recebe_zap = $("#recebe_zap_add").val(), $("#senha_add").val() ? a.senha = $("#senha_add").val() : a.senha = Math.random().toString(36).substring(0, 7), a.id_plano = $("#plano_cli_add").val();
     var e = JSON.stringify(a);
     $.post("../control/control.add_clientes.php", {
         dados: e
@@ -533,38 +533,38 @@ function modal_edite_plano(a) {
     }), $("#modal_edite_plano").modal("show")
 }
 
-$(document).ready(function() {
-    $('#email_cli_add').on('input', function(e) {
+$(document).ready(function () {
+    $('#email_cli_add').on('input', function (e) {
         // Remove espaços da entrada do usuário
-        $(this).val(function(_, value) {
+        $(this).val(function (_, value) {
             return value.replace(/\s/g, '');
         });
     });
 });
 
 
-$(document).ready(function() {
-    $('#email_cli').on('input', function(e) {
+$(document).ready(function () {
+    $('#email_cli').on('input', function (e) {
         // Remove espaços da entrada do usuário
-        $(this).val(function(_, value) {
+        $(this).val(function (_, value) {
             return value.replace(/\s/g, '');
         });
     });
 });
 
-$(document).ready(function() {
-    $('#senha_add').on('input', function(e) {
+$(document).ready(function () {
+    $('#senha_add').on('input', function (e) {
         // Remove espaços da entrada do usuário
-        $(this).val(function(_, value) {
+        $(this).val(function (_, value) {
             return value.replace(/\s/g, '');
         });
     });
 });
 
-$(document).ready(function() {
-    $('#senha_cli').on('input', function(e) {
+$(document).ready(function () {
+    $('#senha_cli').on('input', function (e) {
         // Remove espaços da entrada do usuário
-        $(this).val(function(_, value) {
+        $(this).val(function (_, value) {
             return value.replace(/\s/g, '');
         });
     });
@@ -697,6 +697,7 @@ function save_mov() {
         e.erro ? ($("#btn_save_mov").prop("disabled", !1), $("#btn_save_mov").html("Adicionar"), $("#modal_edite_mov").modal("toggle"), alert(e.msg)) : location.href = ""
     })
 }
+
 moeda = $("#moeda").val(), $(function () {
     var a = function (a) {
         return 11 === a.replace(/\D/g, "").length ? "(00) 00000-0000" : "(00) 0000-00009"
@@ -740,14 +741,37 @@ moeda = $("#moeda").val(), $(function () {
         decimal: ",",
         affixesStay: !0
     })
-}), $("#busca_user").keyup(function () {
+}),
+$("#busca_user").keyup(function () {
     var a = $("#busca_user").val();
     $.post("../control/control.busca_user.php", {
         busca: a
     }, function (a) {
         $("#tbody_clientes").html(a)
     })
-}), $("#email_cli_add").keyup(function () {
+}),
+// $("#busca_revenda").keyup(function () {
+//     var a = $("#busca_revenda").val();
+//     $.post("../control/control.busca_revenda.php", {
+//         busca: a
+//     }, function (a) {
+//         $("#tbody_clientes").html(a)
+//     })
+// }),
+$(document).ready(function () {
+    $("#busca_revenda").on('input', function () {
+        var searchTerm = $(this).val().trim();
+
+        if (searchTerm.length > 0) {
+            $.post("../control/control.busca_revenda.php", {
+                busca: searchTerm
+            }, function (response) {
+                $("#tbody_clientes").html(response);
+            });
+        }
+    });
+});
+$("#email_cli_add").keyup(function () {
     var a = $("#email_cli_add").val();
     $.post("../control/control.verific_email.php", {
         email: a
