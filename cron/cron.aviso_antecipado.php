@@ -106,8 +106,23 @@ if ($list_users) {
 
               if ($plano->template_zap != "") {
                 echo " Dados para fila: {$phone}, {$text}, {$user->id}, {$device_id}, API: {$api}, {$codigo}, {$cliente->id} <br>";
-      
-                $whatsapi_class->fila($phone, $text, $user->id, $device_id, $api, $codigo, $cliente->id, "aviso_antecipado");
+
+                
+                $horario = date("H"); // Checar o horário atual
+                echo " Agora são: {$horario} horas. <br>";
+                
+                $dadosUser = $user_class->dados($user->id); //Procurar pelo horário que o user escolheu
+                $horarioAviso = $dadosUser->horarioAviso;
+                echo " horarioAviso: {$dadosUser->horarioAviso}<br>";
+                
+                //Checar se o horário atual é o mesmo que o user definiu
+                if($horario == $horarioAviso){
+                  echo "if horario == horarioAviso é TRUE <br>";
+                  
+                  $whatsapi_class->fila($phone, $text, $user->id, $device_id, $api, $codigo, $cliente->id, "aviso_antecipado"); // Envia o aviso
+
+                }
+
               }
             }
           }

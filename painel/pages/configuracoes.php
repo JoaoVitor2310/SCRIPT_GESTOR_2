@@ -107,6 +107,7 @@
       <div class="form-group row">
         <label for="dias_aviso_antecipado" class="col-sm-2 col-form-label">Notificações com antecedência </label>
         <div class="col-sm-10">
+          <p>Escolha com quantos dias de antecedência o gestor lembra seu cliente renovar o plano.</p>
           <select class="form-control" id="dias_aviso_antecipado" name="dias_aviso_antecipado">
             <option <?php if($user->dias_aviso_antecipado == '1'){ echo "selected"; } ?> value="1">1 dia antes do vencimento de seus clientes</option>
             <option <?php if($user->dias_aviso_antecipado == '2'){ echo "selected"; } ?> value="2">2 dias antes do vencimento de seus clientes</option>
@@ -116,7 +117,39 @@
             <option <?php if($user->dias_aviso_antecipado == '6'){ echo "selected"; } ?> value="6">6 dias antes do vencimento de seus clientes </option>
             <option <?php if($user->dias_aviso_antecipado == '7'){ echo "selected"; } ?> value="7">7 dias antes do vencimento de seus clientes</option>
           </select>
-          <small>Você pode escolher com quantos dias de antecedência o gestor lembre seu cliente para pagamento do plano</small>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="horarioAviso" class="col-sm-2 col-form-label">Horário do aviso. </label>
+        <div class="col-sm-10">
+          <p>Escolha o horário que esse aviso será enviado</p>
+          <select class="form-control" id="horarioAviso" name="horarioAviso">
+            <option <?php if($user->horarioAviso == '0'){ echo "selected"; } ?> value="0">00:00</option>
+            <option <?php if($user->horarioAviso == '1'){ echo "selected"; } ?> value="1">01:00</option>
+            <option <?php if($user->horarioAviso == '2'){ echo "selected"; } ?> value="2">02:00</option>
+            <option <?php if($user->horarioAviso == '3'){ echo "selected"; } ?> value="3">03:00</option>
+            <option <?php if($user->horarioAviso == '4'){ echo "selected"; } ?> value="4">04:00</option>
+            <option <?php if($user->horarioAviso == '5'){ echo "selected"; } ?> value="5">05:00</option>
+            <option <?php if($user->horarioAviso == '6'){ echo "selected"; } ?> value="6">06::00</option>
+            <option <?php if($user->horarioAviso == '7'){ echo "selected"; } ?> value="7">07:00</option>
+            <option <?php if($user->horarioAviso == '8'){ echo "selected"; } ?> value="8">08:00</option>
+            <option <?php if($user->horarioAviso == '9'){ echo "selected"; } ?> value="9">09:00</option>
+            <option <?php if($user->horarioAviso == '10'){ echo "selected"; } ?> value="10">10:00</option>
+            <option <?php if($user->horarioAviso == '11'){ echo "selected"; } ?> value="11">11:00</option>
+            <option <?php if($user->horarioAviso == '12'){ echo "selected"; } ?> value="12">12:00</option>
+            <option <?php if($user->horarioAviso == '13'){ echo "selected"; } ?> value="13">13:00</option>
+            <option <?php if($user->horarioAviso == '14'){ echo "selected"; } ?> value="14">14:00</option>
+            <option <?php if($user->horarioAviso == '15'){ echo "selected"; } ?> value="15">15:00</option>
+            <option <?php if($user->horarioAviso == '16'){ echo "selected"; } ?> value="16">16:00</option>
+            <option <?php if($user->horarioAviso == '17'){ echo "selected"; } ?> value="17">17:00</option>
+            <option <?php if($user->horarioAviso == '18'){ echo "selected"; } ?> value="18">18:00</option>
+            <option <?php if($user->horarioAviso == '19'){ echo "selected"; } ?> value="19">19:00</option>
+            <option <?php if($user->horarioAviso == '20'){ echo "selected"; } ?> value="20">20:00</option>
+            <option <?php if($user->horarioAviso == '21'){ echo "selected"; } ?> value="21">21:00</option>
+            <option <?php if($user->horarioAviso == '22'){ echo "selected"; } ?> value="22">22:00</option>
+            <option <?php if($user->horarioAviso == '23'){ echo "selected"; } ?> value="23">23:00</option>
+          </select>
         </div>
       </div>
 

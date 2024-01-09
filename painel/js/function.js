@@ -427,7 +427,16 @@ function save_profile() {
 
     $("#btn_perfil_save").prop("disabled", !0), $("#btn_perfil_save").html('Aguarde <i class="fa fa-spinner fa-spin"></i>');
     var a = new Object;
-    a.dias = $("#dias_aviso_antecipado").val(), a.nome = $("#nome_user").val(), a.email = $("#email_user").val(), a.ddi = ddi, a.telefone = $("#telefone_user").val(), void 0 !== $("#senha_user").val() ? a.senha = $("#senha_user").val() : a.senha = Math.random(), void 0 !== $("#mp_client_id").val() ? a.mp_client_id = $("#mp_client_id").val() : a.mp_client_id = "", void 0 !== $("#mp_client_secret").val() ? a.mp_client_secret = $("#mp_client_secret").val() : a.mp_client_secret = "", void 0 !== $("#dark_user").val() && 1 == $("#dark_user").is(":checked") ? a.dark = 1 : a.dark = 0;
+    a.dias = $("#dias_aviso_antecipado").val(),
+    a.horario = $("#horarioAviso").val(),
+        a.nome = $("#nome_user").val(),
+        a.email = $("#email_user").val(),
+        a.ddi = ddi,
+        a.telefone = $("#telefone_user").val(),
+        void 0 !== $("#senha_user").val() ? a.senha = $("#senha_user").val() : a.senha = Math.random(),
+        void 0 !== $("#mp_client_id").val() ? a.mp_client_id = $("#mp_client_id").val() : a.mp_client_id = "",
+        void 0 !== $("#mp_client_secret").val() ? a.mp_client_secret = $("#mp_client_secret").val() : a.mp_client_secret = "",
+        void 0 !== $("#dark_user").val() && 1 == $("#dark_user").is(":checked") ? a.dark = 1 : a.dark = 0;
     var e = JSON.stringify(a);
     $.post("../control/control.edite_profile.php", {
         dados: e
@@ -742,35 +751,35 @@ moeda = $("#moeda").val(), $(function () {
         affixesStay: !0
     })
 }),
-$("#busca_user").keyup(function () {
-    var a = $("#busca_user").val();
-    $.post("../control/control.busca_user.php", {
-        busca: a
-    }, function (a) {
-        $("#tbody_clientes").html(a)
-    })
-}),
-// $("#busca_revenda").keyup(function () {
-//     var a = $("#busca_revenda").val();
-//     $.post("../control/control.busca_revenda.php", {
-//         busca: a
-//     }, function (a) {
-//         $("#tbody_clientes").html(a)
-//     })
-// }),
-$(document).ready(function () {
-    $("#busca_revenda").on('input', function () {
-        var searchTerm = $(this).val().trim();
+    $("#busca_user").keyup(function () {
+        var a = $("#busca_user").val();
+        $.post("../control/control.busca_user.php", {
+            busca: a
+        }, function (a) {
+            $("#tbody_clientes").html(a)
+        })
+    }),
+    // $("#busca_revenda").keyup(function () {
+    //     var a = $("#busca_revenda").val();
+    //     $.post("../control/control.busca_revenda.php", {
+    //         busca: a
+    //     }, function (a) {
+    //         $("#tbody_clientes").html(a)
+    //     })
+    // }),
+    $(document).ready(function () {
+        $("#busca_revenda").on('input', function () {
+            var searchTerm = $(this).val().trim();
 
-        if (searchTerm.length > 0) {
-            $.post("../control/control.busca_revenda.php", {
-                busca: searchTerm
-            }, function (response) {
-                $("#tbody_clientes").html(response);
-            });
-        }
+            if (searchTerm.length > 0) {
+                $.post("../control/control.busca_revenda.php", {
+                    busca: searchTerm
+                }, function (response) {
+                    $("#tbody_clientes").html(response);
+                });
+            }
+        });
     });
-});
 $("#email_cli_add").keyup(function () {
     var a = $("#email_cli_add").val();
     $.post("../control/control.verific_email.php", {

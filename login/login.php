@@ -53,7 +53,9 @@
 
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						<input class="input100" autocomplete="off" list="autocompleteOff" type="text" id="email" name="email">
+						<!-- <input class="input100" autocomplete="off" list="autocompleteOff" type="text" id="email" name="email"> -->
+						<input class="input100" autocomplete="off" list="autocompleteOff" type="text" id="email" name="email" oninput="removeSpaces(this)">
+
 						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
 
@@ -196,6 +198,10 @@
 
          });
      }
+	 function removeSpaces(inputElement) {
+    // Substitui espaços por uma string vazia
+    inputElement.value = inputElement.value.replace(/\s/g, '');
+}
  </script>
 
 </body>

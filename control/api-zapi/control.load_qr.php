@@ -1,62 +1,65 @@
 <?php
 
-
 //include "../../qrcodes/qrlib.php";
+
+// $remove = trim($_POST['remove']);
+// echo "remove: {$remove} <br>";
 
 
 @session_start();
 
-if (isset($_SESSION['SESSION_USER'])) {
-
+if (isset($_SESSION['SESSION_USER']) || isset($_POST['remove'])) {
+  
   $return = new stdClass();
-
+  
   require_once '../../class/Conn.class.php';
   require_once '../../class/Whatsapi.class.php';
   require_once '../../class/User.class.php';
   require_once '../../class/Gestor.class.php';
-
+  
   $conn = new Conn();
   $pdo = $conn->pdo();
-
-
+  
+  
   $wsapi = new Whatsapi();
   $user = new User();
   $gestor = new Gestor();
-
+  
   $endpoint = $gestor->get_options("api_zap_address");
-
+  
   $dados_u = $user->dados($_SESSION['SESSION_USER']['id']);
-  // var_dump($dados_u);
   
   $api = 'ZAPI';
   $key = substr(sha1(rand()), 0, 20);
+  
   $user_id = $dados_u->id;
+  if(!$user_id){
+    $user_id = trim($_POST['user_id']);
+  }
   $situ = 1;
-
+  
   $keyantiga = trim($_POST['keydevice_zapi']);
-
+  
   $v_device = $wsapi->verific_device($dados_u->id, $api);
-
-
+  
+  
   if (isset($_POST['remove'])) {
-
+    
     file_get_contents("192.99.62.193:3333/close?sessionName=" . $keyantiga);
-
+    
     $query = "DELETE FROM `whats_api` WHERE id_user='$user_id' AND api='$api' ";
     $pdo->query($query);
-
+    
     if (isset($_SESSION['time_whatsapp_status'])) {
       unset($_SESSION['time_whatsapp_status']['time']);
       unset($_SESSION['time_whatsapp_status']['session']);
       unset($_SESSION['time_whatsapp_status']);
     }
-
+    echo 'Removido';
   }
 
 
   if (isset($_POST['load'])) {
-    // echo json_encode(['erro' => true, 'msg' => $dados_u]);
-    // die;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $endpoint . '/close?sessionName=' . $keyantiga);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -147,7 +150,7 @@ if (isset($_SESSION['SESSION_USER'])) {
         if ($api_ativa) {
           if ($api_ativa->api != $api) {
             $return->erro = true;
-            $return->msg = "Você já possui outra API ativa, desative-a para ativar está.";
+            $return->msg = "Você já possui outra API ativa, desative-a para ativar essa.";
             echo json_encode($return);
             die;
           }

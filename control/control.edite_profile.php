@@ -11,7 +11,7 @@
 
       $dados = json_decode($_POST['dados']);
 
-      if($dados->nome != "" && $dados->email != "" && $dados->telefone != "" && $dados->dias != ""){
+      if($dados->nome != "" && $dados->email != "" && $dados->telefone != "" && $dados->dias != "" && $dados->horario != ""){
 
         require_once '../class/Conn.class.php';
         require_once '../class/User.class.php';

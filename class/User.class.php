@@ -628,12 +628,13 @@
 
     if(!isset($dados->senha) || $dados->senha == ""){
 
-        $query = $this->pdo->prepare("UPDATE `user` SET nome= :nome, email= :email, telefone= :telefone, ddi= :ddi, dias_aviso_antecipado= :dias, dark= :dark, verificadozap= :verificadozap, verificadomail= :verificadomail WHERE id= :id");
+        $query = $this->pdo->prepare("UPDATE `user` SET nome= :nome, email= :email, telefone= :telefone, ddi= :ddi, dias_aviso_antecipado= :dias, horarioAviso= :horario, dark= :dark, verificadozap= :verificadozap, verificadomail= :verificadomail WHERE id= :id");
         $query->bindValue(':nome',$dados->nome);
         $query->bindValue(':email',$dados->email);
         $query->bindValue(':telefone',$dados->telefone);
         $query->bindValue(':ddi',$dados->ddi);
         $query->bindValue(':dias',$dados->dias);
+        $query->bindValue(':horario',$dados->horario);
         $query->bindValue(':dark',$dados->dark);
         $query->bindValue(':verificadozap',$dados->verificadozap);
         $query->bindValue(':verificadomail',$dados->verificadomail);
