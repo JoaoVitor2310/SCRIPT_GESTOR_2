@@ -102,11 +102,11 @@ if (isset($_SESSION['SESSION_USER'])) {
                             <?php if (@$rev->telefone == "vazio") {
                                 echo @$rev->telefone . " <i style='font-size:10px;cursor:pointer;' title='" . @$idioma->adicione_um_telefone . "' class='text-danger fa fa-warning' ></i>";
                             } else {
-                                echo '<a target="_blank" href="http://wa.me/' . @$rev->telefone . '" > <i class="fa fa-whatsapp"></i> ' . @$rev->telefone . '</a>';
+                                echo '<a target="_blank" class="break-line" href="http://wa.me/' . $rev->ddi . @$rev->telefone . '" > ' . $rev->ddi . @$rev->telefone . '</a>';
                             } ?>
                         </td>
                         <td>
-                            <?= $rev->email; ?>
+                            <?= str_replace('@', '<br>@', $rev->email); ?>
                         </td>
                         <td>
                         <span class="text-info" style="cursor:pointer;" onclick="alert('<?= $rev->senha; ?>');">******</span>
@@ -123,11 +123,11 @@ if (isset($_SESSION['SESSION_USER'])) {
                         </td>
                         <td>
                             <button onclick="renew_user_rev(<?= $rev->id; ?>,<?= $rev->id_plano; ?>);" title="RENOVAR" type="button"
-                                class="btn-outline-primary btn btn-sm"> <i class="fa fa-refresh"></i> </button>
+                                class="btn-outline-primary btn w-100 d-md-block" style="padding: 0px"> <i class="fa fa-refresh"></i> </button>
                             <button onclick="add_user_cred(<?= $rev->id; ?>,<?= $rev->id_plano; ?>);" title="ADICIONAR CRÉDITOS"
-                                type="button" class="btn-outline-primary btn btn-sm"> <i class="fa fa-plus"></i> </button>
+                                type="button" class="btn-outline-primary btn w-100 d-md-block" style="padding: 0px"> <i class="fa fa-plus"></i> </button>
                             <button id="btn_del_<?= $rev->id; ?>" onclick="modal_del_user_rev(<?= $rev->id; ?>);" title="REMOVER"
-                                type="button" class="btn-outline-danger btn btn-sm"> <i class="fa fa-trash"></i> </button>
+                                type="button" class="btn-outline-danger btn w-100 d-md-block" style="padding: 0px"> <i class="fa fa-trash"></i> </button>
                         </td>
                     </tr>
 

@@ -50,7 +50,7 @@ if ($id_revendedor !== '0') { // Revenda, não é possível comprar créditos di
 
     <div
       style="padding: 10px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;"
-      class="card row">
+      class="card row full">
 
 
       <div class="col-md-12">

@@ -41,10 +41,29 @@ if ($list_users) {
 
         $data_format = str_replace('/', '-', $cliente->vencimento);
 
-        // calcular data baseado no user
-        $data = date('d/m/Y', strtotime('-' . $user->dias_aviso_antecipado . ' days', strtotime($data_format)));
-        echo "Data que assinou: {$data} <br>";
-        if ($data == date('d/m/Y')) {
+        
+        
+        $arrayDiasVencimento = array_map('intval', str_split((string)$user->dias_aviso_antecipado));
+        $diaDeAviso = false;
+
+        if (is_array($arrayDiasVencimento) && count($arrayDiasVencimento) > 1) {
+          for($i = 0; $i < count($arrayDiasVencimento); $i++){
+            $data = date('d/m/Y', strtotime('-' . $arrayDiasVencimento[$i] . ' days', strtotime($data_format))); // Converte a data
+            if($data == date('d/m/Y')){ // Compara pra saber se hj é dia de aviso
+              $diaDeAviso = true;
+            }
+            echo 'dia de aviso: '. $data;
+          };
+        }else{
+          $data = date('d/m/Y', strtotime('-' . $user->dias_aviso_antecipado . ' days', strtotime($data_format))); // Converte a data
+          if($data == date('d/m/Y')){ // Compara pra saber se hj é dia de aviso
+            $diaDeAviso = true;
+            echo "Data de aviso: {$data} <br>";
+          }
+        }
+        
+        
+        if ($diaDeAviso) { // Se hj é dia que avisa
           echo "Entrou no if da data <br>";
           
           
@@ -120,9 +139,7 @@ if ($list_users) {
                   echo "if horario == horarioAviso é TRUE <br>";
                   
                   $whatsapi_class->fila($phone, $text, $user->id, $device_id, $api, $codigo, $cliente->id, "aviso_antecipado"); // Envia o aviso
-
                 }
-
               }
             }
           }

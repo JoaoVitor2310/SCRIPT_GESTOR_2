@@ -32,17 +32,17 @@
             
                         <tr>
                           <td class="text-right" ><b class="text-danger" >{nome_cliente}</b></td>
-                          <td class="text-left" >Nome do seu cliente que está a receber</td>
+                          <td class="text-left" >Nome do seu cliente que vai receber</td>
                         </tr>
             
                         <tr>
                           <td class="text-right" ><b class="text-danger" >{primeiro_nome_cliente}</b></td>
-                          <td class="text-left" >Primeiro nome do seu cliente que está a receber</td>
+                          <td class="text-left" >Primeiro nome do seu cliente que vai receber</td>
                         </tr>
             
                         <tr>
                           <td class="text-right" ><b class="text-danger" >{email_cliente}</b></td>
-                          <td class="text-left" >Email do seu cliente que está a receber</td>
+                          <td class="text-left" >Email do seu cliente que vai receber</td>
                         </tr>
                 
                         <tr>
@@ -53,12 +53,12 @@
             
                         <tr>
                           <td class="text-right" ><b class="text-danger" >{telefone_cliente}</b></td>
-                          <td class="text-left" >Telefone do seu cliente que está a receber</td>
+                          <td class="text-left" >Telefone do seu cliente que vai receber</td>
                         </tr>
             
                         <tr>
                           <td class="text-right" ><b class="text-danger" >{vencimento_cliente}</b></td>
-                          <td class="text-left" >Vencimento do seu cliente que está a receber</td>
+                          <td class="text-left" >Vencimento do seu cliente que vai receber</td>
                         </tr>
             
                         <tr>

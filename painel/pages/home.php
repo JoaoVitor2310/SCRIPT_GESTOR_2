@@ -1,12 +1,12 @@
 <?php
 
-if(isset($_COOKIE['new_v'])) {
-  echo '<script>location.href="https://'.$gestor_class->get_options("dominio").'/painel-gestor/";</script>';
+if (isset($_COOKIE['new_v'])) {
+  echo '<script>location.href="https://' . $gestor_class->get_options("dominio") . '/painel-gestor/";</script>';
   die;
 }
 
 
-if(isset($_GET['limit'])) {
+if (isset($_GET['limit'])) {
   $limit = $_GET['limit'] == "all" ? false : $_GET['limit'];
 } else {
   $limit = 10000;
@@ -18,7 +18,7 @@ if(isset($_GET['limit'])) {
 $clientes_class = new Clientes();
 $planos_class = new Planos();
 
-if(!isset($whatsapi_class)) {
+if (!isset($whatsapi_class)) {
   $whatsapi_class = new Whatsapi();
 }
 
@@ -39,7 +39,7 @@ $planos3 = $planos_class->list($_SESSION['SESSION_USER']['id']);
 $num_cli = 0;
 
 $count_cli = $clientes_class->count_clientes($_SESSION['SESSION_USER']['id']);
-if($count_cli) {
+if ($count_cli) {
   $num_cli = $count_cli;
 }
 
@@ -52,7 +52,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 <!-- Head and Nav -->
 <?php include_once 'inc/head-nav.php'; ?>
-<?php if($user->somente_finan == 1) {
+<?php if ($user->somente_finan == 1) {
   include_once('pages/financeiro.php');
   die;
 } ?>
@@ -87,7 +87,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
     <div
       style="padding: 0px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 100%;"
-      class="card row">
+      class="card row full">
 
       <!-- qtd clientes -->
       <div class="col-md-12">
@@ -105,8 +105,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
             <button onclick="location.href='painel_cliente_conf';" type="button"
               class="btn btn-sm btn-outline-secondary"><i class="fa fa-user"></i>
               <?= $idioma->area_cliente; ?>
-              <?php if(isset($plano_usergestor->mini_area_cliente)) {
-                if($plano_usergestor->mini_area_cliente == 0) {
+              <?php if (isset($plano_usergestor->mini_area_cliente)) {
+                if ($plano_usergestor->mini_area_cliente == 0) {
                   echo "<i class='fa fa-star text-primary' ></i>";
                 }
               } ?>
@@ -130,8 +130,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
       <div class="col-md-12">
         <?php
-        if(isset($_SESSION['INFO'])) {
-          echo '<div id="msg_hide" class="alert alert-secondary">'.$_SESSION['INFO'].'</div>';
+        if (isset($_SESSION['INFO'])) {
+          echo '<div id="msg_hide" class="alert alert-secondary">' . $_SESSION['INFO'] . '</div>';
           unset($_SESSION['INFO']);
         }
         ?>
@@ -147,7 +147,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
             </div>
           </div>
           <div class="col-md-8">
-            <?php if($list_categorias_3) {
+            <?php if ($list_categorias_3) {
 
 
 
@@ -173,9 +173,9 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
               ?>
 
-              <?php while($categ = $list_categorias_3->fetch(PDO::FETCH_OBJ)) {
+              <?php while ($categ = $list_categorias_3->fetch(PDO::FETCH_OBJ)) {
 
-                if(isset($cores[$categ->cor])) {
+                if (isset($cores[$categ->cor])) {
                   $back = $cores[$categ->cor];
                 } else {
                   $back = $categ->cor;
@@ -223,48 +223,48 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
               <select style="border-radius: 0px!important;"
                 onchange="location.href='?limit='+(this.options[this.selectedIndex].value);" class="form-control"
                 name="limit_clientes" id="limit_clientes" onchange="">
-                <option <?php if(isset($_GET['limit'])) {
-                  if($_GET['limit'] == 100) {
+                <option <?php if (isset($_GET['limit'])) {
+                  if ($_GET['limit'] == 100) {
                     echo "selected";
                   }
                 } ?> value="100">
                   100
                   <?= $idioma->clientes; ?>
                 </option>
-                <option <?php if(isset($_GET['limit'])) {
-                  if($_GET['limit'] == 150) {
+                <option <?php if (isset($_GET['limit'])) {
+                  if ($_GET['limit'] == 150) {
                     echo "selected";
                   }
                 } ?> value="150">
                   150
                   <?= $idioma->clientes; ?>
                 </option>
-                <option <?php if(isset($_GET['limit'])) {
-                  if($_GET['limit'] == 200) {
+                <option <?php if (isset($_GET['limit'])) {
+                  if ($_GET['limit'] == 200) {
                     echo "selected";
                   }
                 } ?> value="200">
                   200
                   <?= $idioma->clientes; ?>
                 </option>
-                <option <?php if(isset($_GET['limit'])) {
-                  if($_GET['limit'] == 300) {
+                <option <?php if (isset($_GET['limit'])) {
+                  if ($_GET['limit'] == 300) {
                     echo "selected";
                   }
                 } ?> value="300">
                   300
                   <?= $idioma->clientes; ?>
                 </option>
-                <option <?php if(isset($_GET['limit'])) {
-                  if($_GET['limit'] == 'all') {
+                <option <?php if (isset($_GET['limit'])) {
+                  if ($_GET['limit'] == 'all') {
                     echo "selected";
                   }
                 } ?> value="all">
                   <?= $idioma->todos; ?>
                 </option>
               </select>
-              <input style="border-radius: 0px!important;" type="text" id="busca_user"
-                placeholder="Pesquisar" class="form-control" name="" value="">
+              <input style="border-radius: 0px!important;" type="text" id="busca_user" placeholder="Pesquisar"
+                class="form-control" name="" value="">
             </div>
           </div>
         </div>
@@ -273,10 +273,10 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
       <!-- table comprovante -->
-      <?php if($array_clis_comp) { ?>
+      <?php if ($array_clis_comp) { ?>
 
         <div style="margin-bottom:10px;" class="col-md-12">
-          <div class="row" style="background-color:#6550681c;border-radius:10px;padding:10px;">
+          <div class="row" style="background-color:#6550681c;border-radius:10px;">
             <h5>Comprovantes enviados</h5>
 
 
@@ -299,9 +299,9 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                   <?php
 
 
-                  if($array_clis_comp) {
+                  if ($array_clis_comp) {
 
-                    while($comp = $array_clis_comp->fetch(PDO::FETCH_ASSOC)) {
+                    while ($comp = $array_clis_comp->fetch(PDO::FETCH_ASSOC)) {
                       // buscar dados do plano
                       $plano = $planos_class->plano($comp['id_plano']);
                       $cliente = $clientes_class->dados($comp['id_cliente']);
@@ -320,7 +320,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                       $result = $query->fetch(PDO::FETCH_ASSOC);
                       $nomeCategoria = $result['nome'];
                       //jay11
-
+                
                       ?>
 
                       <tr>
@@ -343,13 +343,13 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                         </td>
                         <td>
                           <button onclick="aprova_comp('<?= $comp['id_fat']; ?>');" title="APROVAR" type="button"
-                            class="btn-outline-success btn btn-sm" id="btn_aprova_comp_<?= $comp['id_fat']; ?>"> <i
-                              id="_btn_aprova_comp_<?= $comp['id_fat']; ?>" class="fa fa-check"></i> Aprovar</button>
+                            class="btn-outline-success btn w-100 d-md-block" style="padding: 0px;" id="btn_aprova_comp_<?= $comp['id_fat']; ?>"> <i
+                              id="_btn_aprova_comp_<?= $comp['id_fat']; ?>" class="fa fa-check"></i></button>
 
                           <button onclick="recusa_comp('<?= $comp['id_fat']; ?>');" title="RECUSAR" type="button"
-                            class="btn-outline-info btn btn-sm btn-outline-danger"
+                            class="btn-outline-info btn btn-outline-danger w-100 d-md-block" style="padding: 0px;"
                             id="btn_recusa_comp_<?= $comp['id_fat']; ?>"> <i id="_btn_aprova_comp_<?= $comp['id_fat']; ?>"
-                              class="fa fa-close"></i> RECUSAR</button>
+                              class="fa fa-close"></i></button>
 
                         </td>
                       </tr>
@@ -377,7 +377,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
       <!-- table clientes -->
-      <div class="col-md-12">
+      <div class="col-md-12 no-padding">
         <div class="table-responsive">
           <table class="table table-bordered table-striped table-sm">
             <thead>
@@ -406,9 +406,9 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
               <form class="" id="form_checkbox" action="../control/control.delete_clientes.php" method="POST">
                 <?php
 
-                if($clientes) {
+                if ($clientes) {
 
-                  while($cli = $clientes->fetch(PDO::FETCH_OBJ)) {
+                  while ($cli = $clientes->fetch(PDO::FETCH_OBJ)) {
 
 
 
@@ -417,59 +417,59 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
                     //jay11
                     require_once '../class/Conn.class.php';
-                        $conn = new Conn();
-                        $pdo = $conn->pdo();
+                    $conn = new Conn();
+                    $pdo = $conn->pdo();
 
-                        $idCategoria = $cli->categoria;
-                        $query = $pdo->prepare("SELECT nome FROM `categorias_cliente` WHERE id = :idCategoria LIMIT 1");
-                        $query->bindParam(':idCategoria', $idCategoria, PDO::PARAM_INT);
-                        $query->execute();
-                        
-                        // Recuperar o resultado
-                        $result = $query->fetch(PDO::FETCH_ASSOC);
-                        $nomeCategoria = $result['nome'];
+                    $idCategoria = $cli->categoria;
+                    $query = $pdo->prepare("SELECT nome FROM `categorias_cliente` WHERE id = :idCategoria LIMIT 1");
+                    $query->bindParam(':idCategoria', $idCategoria, PDO::PARAM_INT);
+                    $query->execute();
 
-                    if($cli->vencimento != '0' && $cli->vencimento != '00/00/0000') {
+                    // Recuperar o resultado
+                    $result = $query->fetch(PDO::FETCH_ASSOC);
+                    $nomeCategoria = $result['nome'];
+
+                    if ($cli->vencimento != '0' && $cli->vencimento != '00/00/0000') {
 
                       $vencido = false;
 
                       // verificar data do vencimento
                       $explodeData = explode('/', $cli->vencimento);
                       $explodeData2 = explode('/', date('d/m/Y'));
-                      $dataVen = $explodeData[2].$explodeData[1].$explodeData[0];
-                      $dataHoje = $explodeData2[2].$explodeData2[1].$explodeData2[0];
+                      $dataVen = $explodeData[2] . $explodeData[1] . $explodeData[0];
+                      $dataHoje = $explodeData2[2] . $explodeData2[1] . $explodeData2[0];
 
-                      $three = date('Ymd', strtotime('+3 days', strtotime($explodeData2[0].'-'.$explodeData2[1].'-'.$explodeData2[2])));
-                      $two = date('Ymd', strtotime('+2 days', strtotime($explodeData2[0].'-'.$explodeData2[1].'-'.$explodeData2[2])));
-                      $for = date('Ymd', strtotime('+4 days', strtotime($explodeData2[0].'-'.$explodeData2[1].'-'.$explodeData2[2])));
-                      $one = date('Ymd', strtotime('+1 days', strtotime($explodeData2[0].'-'.$explodeData2[1].'-'.$explodeData2[2])));
+                      $three = date('Ymd', strtotime('+3 days', strtotime($explodeData2[0] . '-' . $explodeData2[1] . '-' . $explodeData2[2])));
+                      $two = date('Ymd', strtotime('+2 days', strtotime($explodeData2[0] . '-' . $explodeData2[1] . '-' . $explodeData2[2])));
+                      $for = date('Ymd', strtotime('+4 days', strtotime($explodeData2[0] . '-' . $explodeData2[1] . '-' . $explodeData2[2])));
+                      $one = date('Ymd', strtotime('+1 days', strtotime($explodeData2[0] . '-' . $explodeData2[1] . '-' . $explodeData2[2])));
 
                       $vencidoTrue = false;
 
-                      if($dataVen == $dataHoje) {
+                      if ($dataVen == $dataHoje) {
                         $ven = "<b class='badge badge-warning'>{$cli->vencimento}</b>";
-                      } else if($dataHoje > $dataVen) {
+                      } else if ($dataHoje > $dataVen) {
                         $ven = "<b class='badge badge-danger'>{$cli->vencimento}</b>";
                         $vencidoTrue = true;
                         $vencido = true;
-                      } else if($dataHoje < $dataVen) {
+                      } else if ($dataHoje < $dataVen) {
                         $ven = "<b class='badge badge-success'>{$cli->vencimento}</b>";
                       }
 
 
-                      if($dataVen == $for) {
+                      if ($dataVen == $for) {
                         $ven = "<b class='badge badge-info'>{$cli->vencimento}</b>";
                       }
 
-                      if($dataVen == $three) {
+                      if ($dataVen == $three) {
                         $ven = "<b class='badge badge-info'>{$cli->vencimento}</b>";
                       }
 
-                      if($dataVen == $two) {
+                      if ($dataVen == $two) {
                         $ven = "<b class='badge badge-info'>{$cli->vencimento}</b>";
                       }
 
-                      if($dataVen == $one) {
+                      if ($dataVen == $one) {
                         $ven = "<b class='badge badge-info'>{$cli->vencimento}</b>";
                       }
 
@@ -481,42 +481,25 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
                     $getCategoria = $clientes_class->get_categoria($cli->categoria);
-                    if($getCategoria) {
+                    if ($getCategoria) {
                       $colorCate = $getCategoria->cor;
                     } else {
                       $colorCate = "secondary";
                     }
-
-
-                    $cores['danger'] = "#ec3541";
-                    $cores['primary'] = "#0048ff";
-                    $cores['secondary'] = "#dddddd";
-                    $cores['info'] = "#2d87ce";
-                    $cores['warning'] = "#fb9100";
-                    $cores['marrom'] = "#6d2b19";
-                    $cores['green'] = "#2bad18";
-                    $cores['roxo'] = "#7922ff";
-                    $cores['verde2'] = "#04fbb1";
-
-                    if(isset($cores[$getCategoria->cor])) {
-                      $back = $cores[$getCategoria->cor];
-                    } else {
-                      $back = $getCategoria->cor;
-                    }
                     ?>
 
-                    <tr <?php if(@$vencidoTrue == true) {
+                    <tr <?php if (@$vencidoTrue == true) {
                       echo "class='inativo';";
                     } else {
                       echo "class='ativo';";
                     } ?>
                       id="tr_<?= $cli->id; ?>"
-                      class="trs <?= @$dataHoje; ?> <?= @$three.' - '.@$for.' - '.@$two.' - '.@$one; ?>">
+                      class="trs <?= @$dataHoje; ?> <?= @$three . ' - ' . @$for . ' - ' . @$two . ' - ' . @$one; ?>">
 
                       <td>
-                        <!-- <span style="background-color: <?= $back; ?>">&nbsp;</span> -->
+                        
                         <?= $cli->nome; ?>
-                        <?php if($cli->identificador_externo != NULL && $cli->identificador_externo != "") { ?>
+                        <?php if ($cli->identificador_externo != NULL && $cli->identificador_externo != "") { ?>
                           <br /><span
                             style="font-size: 13px; margin: 0px;top: 0px!important;position: relative;color: gray;font-style: italic;">#
                             <?= $cli->identificador_externo; ?>
@@ -528,44 +511,45 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                         <?= $nomeCategoria ? $nomeCategoria : 'Nenhuma' ?>
                       </td>
                       <td class="wpp-td">
-                        <?php if($cli->telefone == "vazio") {
-                          echo $cli->telefone." <i style='font-size:10px;cursor:pointer;' title='".$idioma->adicione_um_telefone."' class='text-danger fa fa-warning' ></i>";
+                        <?php if ($cli->telefone == "vazio") {
+                          echo $cli->telefone . " <i style='font-size:10px;cursor:pointer;' title='" . $idioma->adicione_um_telefone . "' class='text-danger fa fa-warning' ></i>";
                         } else {
-                          echo '<a target="_blank" class="break-line" href="http://wa.me/'.$cli->telefone.'" >'.$cli->telefone.'</a>';
+                          echo '<a target="_blank" class="break-line" href="http://wa.me/' . $cli->telefone . '" >' . $cli->telefone . '</a>';
                         } ?>
                       </td>
                       <td>
                         <?= $ven; ?>
                       </td>
                       <td>
-                        <?php if($plano) {
+                        <?php if ($plano) {
                           echo $plano->nome;
                         } else {
-                          echo "<i style='cursor:pointer;' title='".$idioma->adicione_um_plano."' class='text-danger fa fa-warning' ></i> ";
+                          echo "<i style='cursor:pointer;' title='" . $idioma->adicione_um_plano . "' class='text-danger fa fa-warning' ></i> ";
                         } ?>
                       </td>
                       <td class="action-td">
-                        <button onclick="modal_send_zap(<?= $cli->id; ?>,'<?= $cli->nome; ?>','<?= $cli->telefone; ?>',<?php if($plano) {
+                        <button onclick="modal_send_zap(<?= $cli->id; ?>,'<?= $cli->nome; ?>','<?= $cli->telefone; ?>',<?php if ($plano) {
                                 echo $plano->id;
                               } else {
                                 echo 'no';
-                              } ?>);" title="COBRANÇA" type="button" class="btn-outline-primary w-100 d-md-block" id=""> <i
-                            class="fa fa-paper-plane"></i> </button>
-                        <button <?php if($plano == false) {
+                              } ?>);" title="COBRANÇA" type="button" class="btn-outline-primary w-100 d-md-block"
+                          id=""> <i class="fa fa-paper-plane"></i> </button>
+                        <button <?php if ($plano == false) {
                           echo 'disabled style="cursor:no-drop;" ';
                         } ?>
                           onclick="renew_cli(<?= $cli->id; ?>,<?= $cli->id_plano; ?>);" title="RENOVAR" type="button"
                           class="btn-outline-primary w-100 d-md-block  " id="btn_renew_<?= $cli->id; ?>"> <i
                             id="_btn_renew_<?= $cli->id; ?>" class="fa fa-refresh"></i> </button>
                         <button onclick="edite_cliente(<?= $cli->id; ?>);" title="EDITAR" type="button"
-                          class="btn-outline-primary w-100 d-md-block btn-outline-primary"> <i class="fa fa-pencil"></i> </button>
+                          class="btn-outline-primary w-100 d-md-block btn-outline-primary"> <i class="fa fa-pencil"></i>
+                        </button>
                         <button onclick="modal_del_cli(<?= $cli->id; ?>);" title="EXCLUIR" type="button"
                           class="btn-outline-primary w-100 d-md-block  "> <i class="fa fa-trash"></i> </button>
-                        <button <?php if($plano_usergestor->faturas_cliente == 1) { ?>
+                        <button <?php if ($plano_usergestor->faturas_cliente == 1) { ?>
                             onclick="modal_faturas_cli(<?= $cli->id; ?>,'<?= $cli->nome; ?>','<?= $cli->email; ?>');" <?php } else {
-                          echo 'onclick="alert(\''.$idioma->faca_upgrade_alert.'\');location.href=\'cart?upgrade\';"';
-                        } ?> title="<?= $idioma->registr_de_fats; ?>"
-                          type="button" class="btn-outline-primary w-100 d-md-block  ">
+                          echo 'onclick="alert(\'' . $idioma->faca_upgrade_alert . '\');location.href=\'cart?upgrade\';"';
+                        } ?> title="<?= $idioma->registr_de_fats; ?>" type="button"
+                          class="btn-outline-primary w-100 d-md-block  ">
                           <i class="fa fa-file"></i> </button>
 
                       </td>
@@ -668,7 +652,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
 
-                  <br>
+              <br>
               <label>Opções de importação</label>
               <br>
               <label for="import_cliente_json" class="btn btn-primary">
@@ -742,7 +726,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
           <?php
 
 
-          if(@$plano_usergestor->mini_area_cliente == 1) {
+          if (@$plano_usergestor->mini_area_cliente == 1) {
 
             ?>
 
@@ -783,7 +767,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
           <div class="col-md-6">
             <p>DDI+DDD+NUM</p>
-            <input type="text" class="form-control margin" id="telefone_cli" placeholder="DDI+DDD+NUM" pattern="[0-9]+" inputmode="numeric" oninput="validarNumeros(this)">
+            <input type="text" class="form-control margin" id="telefone_cli" placeholder="DDI+DDD+NUM" pattern="[0-9]+"
+              inputmode="numeric" oninput="validarNumeros(this)">
             <!-- <small style="font-size:10px;" id="tellHelp" class="form-text text-muted">
               <b>Aviso:</b><a
                 href="https://t.me/gestormaster/base-de-conhecimento/como-enviar-mensagens-automaticas-por-whatsapp/"
@@ -800,8 +785,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
           <div class="col-md-6 ">
             <select class="form-control" name="categoria_cli_atual" id="categoria_cli_atual">
               <option value="0">Selecionar uma categoria</option>
-              <?php if($list_categorias_2) {
-                while($cate = $list_categorias_2->fetch(PDO::FETCH_OBJ)) {
+              <?php if ($list_categorias_2) {
+                while ($cate = $list_categorias_2->fetch(PDO::FETCH_OBJ)) {
                   ?>
                   <option value="<?= $cate->id; ?>">
                     <?= $cate->nome; ?>
@@ -843,8 +828,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
               <?php
 
-              if($planos) {
-                while($plano = $planos->fetch(PDO::FETCH_OBJ)) {
+              if ($planos) {
+                while ($plano = $planos->fetch(PDO::FETCH_OBJ)) {
 
                   ?>
 
@@ -868,7 +853,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
           <div class="col-md-12 margin">
-            <?php if(@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na area
+            <?php if (@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na area
                 do
                 cliente</small>
             <?php } ?>
@@ -915,7 +900,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
           <?php
 
-          if(@$plano_usergestor->mini_area_cliente == 1) {
+          if (@$plano_usergestor->mini_area_cliente == 1) {
 
             ?>
 
@@ -950,7 +935,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
           <?php } ?>
 
           <div class="col-md-6">
-            <input type="text" class="form-control margin" id="telefone_cli_add" placeholder="DDI+DDD+NUM" pattern="[0-9]+" inputmode="numeric" oninput="validarNumeros(this)" >
+            <input type="text" class="form-control margin" id="telefone_cli_add" placeholder="DDI+DDD+NUM"
+              pattern="[0-9]+" inputmode="numeric" oninput="validarNumeros(this)">
             <!-- <smal style="font-size:10px;color:gray;">
                 <b>Aviso:</b><a
                 href="https://kb.gestormaster.top/base-de-conhecimento/como-enviar-mensagens-automaticas-por-whatsapp/"
@@ -967,8 +953,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
           <div class="col-md-6">
             <select class="form-control" name="categoria_cli_add" id="categoria_cli_add">
               <option value="0">Selecionar uma categoria</option>
-              <?php if($list_categorias_1) {
-                while($cate = $list_categorias_1->fetch(PDO::FETCH_OBJ)) {
+              <?php if ($list_categorias_1) {
+                while ($cate = $list_categorias_1->fetch(PDO::FETCH_OBJ)) {
                   ?>
                   <option value="<?= $cate->id; ?>">
                     <?= $cate->nome; ?>
@@ -1015,8 +1001,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
               <?php
 
-              if($planos2) {
-                while($plano2 = $planos2->fetch(PDO::FETCH_OBJ)) {
+              if ($planos2) {
+                while ($plano2 = $planos2->fetch(PDO::FETCH_OBJ)) {
 
                   ?>
 
@@ -1039,7 +1025,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
           <div class="col-md-12 margin">
-            <?php if(@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na area
+            <?php if (@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na area
                 do cliente</small>
             <?php } ?>
             <textarea name="notas" id="notas_cli_add" class="form-control" rows="3" cols="80"
@@ -1101,7 +1087,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
               <div class="form-group">
                 <textarea data-emojiable="true" data-emoji-input="unicode" placeholder="Texto da mensagem"
                   class="emoji-wysiwyg-editor form-control textarea-control" rows="10" id="texto_to"></textarea>
-                  
+
               </div>
             </div>
 
@@ -1216,7 +1202,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 </div>
 
 
-<?php if(@$plano_usergestor->faturas_cliente == 1) { ?>
+<?php if (@$plano_usergestor->faturas_cliente == 1) { ?>
   <!--  Modal faturas cliente -->
   <div class="modal fade" data-backdrop="static" id="modal_fat_cli" tabindex="-1" role="dialog"
     aria-labelledby="Titutlo_modal_del_cliente" aria-hidden="true">
@@ -1243,7 +1229,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
             </div>
             <div class="col-auto my-1">
               <div class="custom-control custom-checkbox mr-sm-2">
-                <input onclick="status_lanca_finan();" value="1" <?php if($user->lancar_finan == 1) {
+                <input onclick="status_lanca_finan();" value="1" <?php if ($user->lancar_finan == 1) {
                   echo "checked";
                 } ?>
                   type="checkbox" id="lancar_finan_status" name="lancar_finan_status" class="custom-control-input">
@@ -1251,12 +1237,12 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                 <label class="custom-control-label" for="lancar_finan_status">Lançamento automático financeiro</label>
               </div>
               <div class="custom-control custom-checkbox mr-sm-2">
-                <input onclick="status_vencimento_flex();" value="1" <?php if($user->vencimento_flex == 1) {
+                <input onclick="status_vencimento_flex();" value="1" <?php if ($user->vencimento_flex == 1) {
                   echo "checked";
                 } ?> type="checkbox" id="vencimento_flex_status" name="vencimento_flex_status"
                   class="custom-control-input">
                 <input type="hidden" id="status_vencimento_flex" value="<?= $user->vencimento_flex; ?>" />
-                <label class="custom-control-label" for="vencimento_flex_status">Vencimentos Flexíveis</label> 
+                <label class="custom-control-label" for="vencimento_flex_status">Vencimentos Flexíveis</label>
                 <!-- |  -->
                 <!-- <a
                   href="https://youtu.be/FmI-DDg96ZQ" target="_blank"><i class="fa fa-question"></i>
@@ -1265,7 +1251,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
             </div>
             <div class="col-auto my-1">
               <div class="custom-control custom-checkbox mr-sm-2">
-                <input onclick="status_gera_fat_cli();" value="1" <?php if($user->gera_fat_cli == 1) {
+                <input onclick="status_gera_fat_cli();" value="1" <?php if ($user->gera_fat_cli == 1) {
                   echo "checked";
                 } ?>
                   type="checkbox" id="gera_fat_cli" name="gera_fat_cli" class="custom-control-input">
@@ -1391,8 +1377,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
                     <?php
 
-                    if($planos3) {
-                      while($plano = $planos3->fetch(PDO::FETCH_OBJ)) {
+                    if ($planos3) {
+                      while ($plano = $planos3->fetch(PDO::FETCH_OBJ)) {
 
                         ?>
 
@@ -1604,7 +1590,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
       var id_cli = $("#id_cli_send").val();
       var text_to = $("textarea.emoji-wysiwyg-editor").text();
       let phone = $("#zap_cli").val();
-      
+
       console.log(text_to);
 
       $.post('../control/control.resend_cobranca.php', { text_to, id_cli, }, function (data) {

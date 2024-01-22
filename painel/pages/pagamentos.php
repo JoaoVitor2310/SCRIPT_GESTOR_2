@@ -1,3 +1,4 @@
+<!-- Página Assinatura -->
 <?php
 if (isset($_SESSION['pre_cadastro'])) {
   unset($_SESSION['pre_cadastro']);
@@ -57,8 +58,8 @@ if (isset($_FILES) && isset($_POST['meio_pay_idFat'])) {
   <div class="">
 
     <div
-      style="padding: 10px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;"
-      class="card row">
+      style="-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;"
+      class="card row full">
 
       <!--<div class="col-md-12">-->
       <!--    <div class="alert alert-danger" >-->
@@ -102,7 +103,7 @@ if (isset($_FILES) && isset($_POST['meio_pay_idFat'])) {
 
       <div class="col-md-12">
         <div class="row text-center" style="margin-top:5px;">
-          <div class="col-md-12">
+          <div class="col-md-12 no-padding">
 
             <div class="table-responsive">
               <table class="table table-striped table-sm">
@@ -117,7 +118,7 @@ if (isset($_FILES) && isset($_POST['meio_pay_idFat'])) {
                     </th>
                     <th>
                       <?= $idioma->forma; ?>
-                    </th> <!-- Não é aqui -->
+                    </th>
                     <th>
                       <?= $idioma->status; ?>
                     </th>
@@ -210,7 +211,7 @@ if (isset($_FILES) && isset($_POST['meio_pay_idFat'])) {
                       if ($fatura->comprovante == '0') {
                         if ($fatura->status != "Aprovado" && $fatura->status != "Devolvido" && $fatura->status != "Cancelado" && $fatura->status != "Mediação" && $fatura->status != "Rejeitado") {
                           if ($fatura->forma == "Boleto" || $fatura->forma == "TED" || $fatura->forma == "Pendente") {
-                            $comp_link = "<br /><a style='font-size:10px;' target='_blank' href='https://gestormaster.top/gmaster/c/" . $fatura->id . "' >Enviar comprovante <i class='fa fa-external-link' ></i></a>";
+                            $comp_link = "<br /><a style='font-size:10px;' target='_blank' href='https://gestormaster.top/gmaster/c/" . $fatura->id . "' >Enviar comprovante <i ></i></a>";
                           }
                         }
                       }
@@ -232,8 +233,6 @@ if (isset($_FILES) && isset($_POST['meio_pay_idFat'])) {
                           <?= $fatura->data; ?> -
                           <?= $fatura->hora; ?>
                         </td>
-
-                        <!-- é aqui no segundo "forma" -->
 
                         <td title="<?= $idioma->form_pay_fat_e; ?>  <?= $fatura->forma; ?>">
                           <?php
@@ -260,15 +259,15 @@ if (isset($_FILES) && isset($_POST['meio_pay_idFat'])) {
                           <?php if ($fatura->status == "Pendente") { ?>
                             <button id="btn_pay_<?= $fatura->id; ?>"
                               onclick="init_pay_method(<?= $fatura->id; ?>,'<?= $fatura->moeda; ?>');" title="PAGAR"
-                              type="button" class="click_<?= $num_click; ?> btn btn-sm btn-success" name="button">
+                              type="button" class="mb-2 click_<?= $num_click; ?> btn btn-success w-100 d-md-block" style="padding: 0px;" name="button">
                               <?= $idioma->pagar; ?>
                             </button>
                             <button
                               onclick="$('#id_fat_promo').val(<?= $fatura->id; ?>);$('#modal_codigo_promo').modal('show');"
-                              class="btn btn-sm" <?php if ($dark == 1) {
-                                echo 'style="color:#000;background-color:#fff;"';
+                              class="btn w-100 d-md-block" <?php if ($dark == 1) {
+                                echo 'style="color:#000;background-color:#fff; padding: 0px;"';
                               } else {
-                                echo 'style="color:#fff;background-color:#000;"';
+                                echo 'style="color:#fff;background-color:#000; padding: 0px;"';
                               } ?>><i class="fa fa-ticket"></i></button>
                           <?php } ?>
                         </td>

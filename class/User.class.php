@@ -243,6 +243,7 @@
     $query->bindValue(':vencimento',$vencimento);
     $query->bindValue(':id',$idCli);
 
+   
     if($query->execute()){
       return true;
     }else{

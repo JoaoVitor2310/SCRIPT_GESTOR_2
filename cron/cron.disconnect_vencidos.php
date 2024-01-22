@@ -45,10 +45,16 @@ if ($list_users) {
       $vencimento = $dadosUser->vencimento;
 
       echo "Vencimento é : {$vencimento} <br>";
-
+      
       // Obtém timestamps das datas
       $timestampAtual = strtotime(date("Y-m-d")); // Converte a data atual para timestamp
-      $timestampVencimento = strtotime($vencimento); // Converte a data de vencimento para timestamp
+      // echo "timestampAtual é : {$timestampAtual} <br>";
+      
+      
+      $dataObj = DateTime::createFromFormat('d/m/Y', $vencimento);
+      $novaDataFormatada = $dataObj->format('Y-m-d');
+      $timestampVencimento = strtotime($novaDataFormatada); // Converte a data de vencimento para timestamp
+      // echo "timestampVencimento é : {$timestampVencimento} <br>";
 
       // Compara os timestamps
       if ($timestampAtual > $timestampVencimento) {

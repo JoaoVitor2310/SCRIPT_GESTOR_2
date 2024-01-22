@@ -61,13 +61,13 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
 
     <div
       style="padding: 10px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;"
-      class="card row">
+      class="card row full">
 
 
       <div class="col-md-12">
         <h1 class="h2 h2-cell">Revenda <i class="fa fa-bullhorn"></i> </h1>
         <div style="margin-bottom:10px!important;" class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group mr-2">
+          <div class="btn-group mr-2 fullWidth allHeight">
             <button onclick="$('#modal_add_cliente').modal('show');verific_inputs_add_cli();" type="button"
               class="btn btn-sm btn-outline-secondary"><i class="fa fa-plus"></i> Adicionar Usu√°rio</button>
 
@@ -190,8 +190,8 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
     <div class="row">
       <div class="col-md-12 text-left">
         <h5>Usu√°rios adicionados por revenda</h5>
-        <input style="border-radius: 0px!important;" type="text" id="busca_revenda"
-                placeholder="Pesquisar" class="form-control" name="" value="">
+        <input style="border-radius: 0px!important;" type="text" id="busca_revenda" placeholder="Pesquisar"
+          class="form-control" name="" value="">
       </div>
     </div>
     <div class="table-responsive">
@@ -207,7 +207,7 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
             <th>Senha</th>
             <th>Vencimento</th>
             <th>Cr√©ditos</th>
-            <th> <i class="fa fa-cogs"></i> </th>
+            <th style="min-width: 45px !important; text-align: center;"> <i class="fa fa-cogs"></i> </th>
           </tr>
         </thead>
         <tbody id="tbody_clientes" class="">
@@ -259,10 +259,17 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
                   } ?>
                 </td>
                 <td>
-                  <?= $rev->ddi . $rev->telefone; ?>
+                  <?php
+                  if (@$rev->telefone == "vazio") {
+                    echo @$rev->telefone . " <i style='font-size:10px;cursor:pointer;' title='Add cell' class='text-danger fa fa-warning' ></i>";
+                }else{
+                  echo '<a target="_blank" class="break-line" href="http://wa.me/' . $rev->ddi . $rev->telefone . '" >' . $rev->ddi . $rev->telefone . '</a>';
+                }
+                  ?>
+
                 </td>
                 <td>
-                  <?= $rev->email; ?>
+                  <?= str_replace('@', '<br>@', $rev->email); ?>
                 </td>
                 <td> <span class="text-info" style="cursor:pointer;" onclick="alert('<?= $rev->senha; ?>');">******</span>
                 </td>
@@ -270,7 +277,6 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
                   <?= $ven; ?>
                 </td>
                 <td>
-                  <!-- EM PROGRESSO -->
                   <?php
                   $credCadaRev = $revenda_class->qtd_creditos($rev->id);
                   echo $credCadaRev[0]->qtd;
@@ -280,11 +286,14 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
                 </td>
                 <td>
                   <button onclick="renew_user_rev(<?= $rev->id; ?>,<?= $rev->id_plano; ?>);" title="RENOVAR" type="button"
-                    class="btn-outline-primary btn btn-sm"> <i class="fa fa-refresh"></i> </button>
+                    class="btn-outline-primary btn w-100 d-md-block" style="padding: 0px"> <i class="fa fa-refresh"></i>
+                  </button>
                   <button onclick="add_user_cred(<?= $rev->id; ?>,<?= $rev->id_plano; ?>);" title="ADICIONAR CR√âDITOS"
-                    type="button" class="btn-outline-primary btn btn-sm"> <i class="fa fa-plus"></i> </button>
+                    type="button" class="btn-outline-primary btn w-100 d-md-block" style="padding: 0px"> <i
+                      class="fa fa-plus"></i> </button>
                   <button id="btn_del_<?= $rev->id; ?>" onclick="modal_del_user_rev(<?= $rev->id; ?>);" title="REMOVER"
-                    type="button" class="btn-outline-danger btn btn-sm"> <i class="fa fa-trash"></i> </button>
+                    type="button" class="btn-outline-danger btn w-100 d-md-block" style="padding: 0px"> <i
+                      class="fa fa-trash"></i> </button>
 
                 </td>
               </tr>

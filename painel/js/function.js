@@ -83,23 +83,30 @@ function removeAuth() {
 
 
 function aprova_comp(a) {
-    $("#btn_aprova_comp_" + a).prop("disabled", !0), $("#btn_aprova_comp_" + a).html('<i class="fa fa-spin fa-refresh" ></i> Aguarde'), $.post("../control/control.comp_opc.php", {
-        type: "aprova",
-        idfat: a
-    }, function (a) {
-        var e = JSON.parse(a);
-        alert(e.msg), location.href = ""
-    })
+    const segue = confirm("Deseja realmente confirmar o comprovante?");
+    if (segue) {
+        $("#btn_aprova_comp_" + a).prop("disabled", !0), $("#btn_aprova_comp_" + a).html('<i class="fa fa-spin fa-refresh" ></i> Aguarde'), $.post("../control/control.comp_opc.php", {
+            type: "aprova",
+            idfat: a
+        }, function (a) {
+            var e = JSON.parse(a);
+            alert(e.msg), location.href = ""
+        })
+    }
 }
 
 function recusa_comp(a) {
-    $("#btn_recusa_comp_" + a).prop("disabled", !0), $("#btn_recusa_comp_" + a).html('<i class="fa fa-spin fa-refresh" ></i> Aguarde'), $.post("../control/control.comp_opc.php", {
-        type: "recusar",
-        idfat: a
-    }, function (a) {
-        var e = JSON.parse(a);
-        alert(e.msg), location.href = ""
-    })
+    const segue = confirm("Deseja realmente recusar o comprovante?");
+    if (segue) {
+
+        $("#btn_recusa_comp_" + a).prop("disabled", !0), $("#btn_recusa_comp_" + a).html('<i class="fa fa-spin fa-refresh" ></i> Aguarde'), $.post("../control/control.comp_opc.php", {
+            type: "recusar",
+            idfat: a
+        }, function (a) {
+            var e = JSON.parse(a);
+            alert(e.msg), location.href = ""
+        })
+    }
 }
 
 function modal_img_plano(id, img) {
@@ -290,20 +297,25 @@ function del_aviso() {
 }
 
 function add_aviso() {
-    $("#btn_add_aviso").prop("disabled", !0), $("#btn_add_aviso").html('<i class="fa fa-spinner fa-spin"></i> Aguarde');
     var a = new Object;
     a.titulo = $("#titulo_aviso_add").val(), a.texto = $("#texto_aviso_add").val(), a.color = $("#color_aviso_add").val(), a.auto_delete = $("#auto_delete_aviso_add").val();
-    var e = JSON.stringify(a);
-    $.post("../control/control.avisos_painel_cli.php", {
-        add: "",
-        dados: e,
-        id: 0
-    }, function (a) {
-        var e = JSON.parse(a);
-        e.erro ? ($("#msg_response_aviso").removeClass("text-success"), $("#msg_response_aviso").addClass("text-danger"), $("#msg_response_aviso").html(e.msg), $("#btn_save_aviso").prop("disabled", !1), $("#btn_save_aviso").html("Salvar")) : ($("#msg_response_aviso").removeClass("text-danger"), $("#msg_response_aviso").addClass("text-success"), $("#msg_response_aviso").html(e.msg), location.href = ""), setTimeout(function () {
-            $("#msg_response_aviso").html("")
-        }, 3e3)
-    })
+
+    if (a.titulo == "" || a.texto == "" || a.color == "" || a.auto_delete == "") {
+        alert('Preencha todos os campos.');
+    } else {
+        $("#btn_add_aviso").prop("disabled", !0), $("#btn_add_aviso").html('<i class="fa fa-spinner fa-spin"></i> Aguarde');
+        var e = JSON.stringify(a);
+        $.post("../control/control.avisos_painel_cli.php", {
+            add: "",
+            dados: e,
+            id: 0
+        }, function (a) {
+            var e = JSON.parse(a);
+            e.erro ? ($("#msg_response_aviso").removeClass("text-success"), $("#msg_response_aviso").addClass("text-danger"), $("#msg_response_aviso").html(e.msg), $("#btn_save_aviso").prop("disabled", !1), $("#btn_save_aviso").html("Salvar")) : ($("#msg_response_aviso").removeClass("text-danger"), $("#msg_response_aviso").addClass("text-success"), $("#msg_response_aviso").html(e.msg), location.href = ""), setTimeout(function () {
+                $("#msg_response_aviso").html("")
+            }, 3e3)
+        })
+    }
 }
 
 function save_aviso() {
@@ -427,8 +439,19 @@ function save_profile() {
 
     $("#btn_perfil_save").prop("disabled", !0), $("#btn_perfil_save").html('Aguarde <i class="fa fa-spinner fa-spin"></i>');
     var a = new Object;
-    a.dias = $("#dias_aviso_antecipado").val(),
-    a.horario = $("#horarioAviso").val(),
+    // a.dias = $("#dias_aviso_antecipado").val(),
+    var diasArray = $("input[name='dias_aviso_antecipado[]']:checked").map(function () {
+        return $(this).val();
+    }).get();
+
+    // Converte o array para uma única string
+    a.dias = diasArray.join("");
+    // a.dias = diasConcatenados
+
+    // Exibe a string ou realiza outras operações conforme necessário
+    console.log("dias: " + a.dias),
+
+        a.horario = $("#horarioAviso").val(),
         a.nome = $("#nome_user").val(),
         a.email = $("#email_user").val(),
         a.ddi = ddi,
@@ -759,14 +782,6 @@ moeda = $("#moeda").val(), $(function () {
             $("#tbody_clientes").html(a)
         })
     }),
-    // $("#busca_revenda").keyup(function () {
-    //     var a = $("#busca_revenda").val();
-    //     $.post("../control/control.busca_revenda.php", {
-    //         busca: a
-    //     }, function (a) {
-    //         $("#tbody_clientes").html(a)
-    //     })
-    // }),
     $(document).ready(function () {
         $("#busca_revenda").on('input', function () {
             var searchTerm = $(this).val().trim();

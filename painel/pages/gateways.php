@@ -32,7 +32,7 @@
      <main class="page-content">
 <div class="">
 
-            <div style="padding: 10px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;" class="card row" >
+            <div style="padding: 10px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;" class="card row full" >
 
               <div class="col-md-12">
                 <h1 class="h2 h2-cell">Gateways de pagamento <i class="fa fa-dollar" ></i> </h1>
@@ -43,7 +43,7 @@
               <div class="col-md-12">
                   <div class="col-md-3"></div>
                   <div class="col-md-6">
-                      <div class="btn-group">
+                      <div class="btn-group fullWidth allHeight">
                           <button class="btn btn-info btn-sm" onclick="load_card_gateways('mercadopago');" >Mercado Pago <i class="fa fa-handshake-o"></i></button>
                           <button class="btn btn-success btn-sm" onclick="load_card_gateways('picpay');" >PicPay <i class="fa fa-qrcode"></i></button>
                           <!-- <button class="btn btn-primary btn-sm" onclick="load_card_gateways('paghiper');" >Pag Hiper <i class="fa fa-barcode"></i></button> -->

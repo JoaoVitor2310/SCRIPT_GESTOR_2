@@ -192,40 +192,60 @@ if ($_SESSION['SESSION_USER']['two_facto'] == 1 && !isset($_SESSION['AUTH_TWO_FA
       color: #000;
     }
 
+    /* //jay11 */
+
+    .no-padding {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .full {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
     @media (min-width: 770px) {
       .bd-placeholder-img-lg {
-        font-size: 3.5rem;
+          font-size: 3.5rem;
+        }
       }
-    }
-    /* //jay11 */
-    @media (max-width: 770px) {
-      .break-line {
-        display: inline-block;
-        white-space: pre-line;
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        max-width: 4ch;
-      }
-      .action-td{
-        max-width: 90px;
-      }
-      .h2-cell{
-        text-align: center;
-      }
-    }
-    
 
-    /* .col-md-6{
+      @media (max-width: 770px) {
+        .break-line {
+          display: inline-block;
+          white-space: pre-line;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          max-width: 4ch;
+        }
+
+        .action-td {
+          max-width: 90px;
+        }
+
+        .h2-cell {
+          text-align: center;
+        }
+        .fullWidth{
+          width: 100%;
+        }
+        .allHeight{
+          height: 100%;
+        }
+      }
+
+
+      /* .col-md-6{
       width: 100%;
     } */
-    /* @media (max-width: 1180px) {
+      /* @media (max-width: 1180px) {
       #abrir_link_pay{
         
       }
     } */
 
 
-    /* //jay11 */
+      /* //jay11 */
   </style>
   <!-- Custom styles for this template -->
   <link href="css/dashboard.css" rel="stylesheet">

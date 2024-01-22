@@ -34,7 +34,7 @@ if ($plano_usergestor->gateways) {
 
     <div
       style="padding: 10px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;"
-      class="card row">
+      class="card row full">
 
       <div class="col-md-12">
         <h1 class="h2 h2-cell">
@@ -55,7 +55,7 @@ if ($plano_usergestor->gateways) {
         unset($_SESSION['INFO']);
       }
       ?>
-      <div class='col-md-12'>
+      <div class='col-md-12 no-padding'>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>
@@ -102,7 +102,7 @@ if ($plano_usergestor->gateways) {
                     </td>
                     <td>
                       <button onclick="modal_edite_plano(<?= $plano->id; ?>);" title="<?= $idioma->editar; ?>" type="button"
-                        class="btn-outline-info btn btn-sm btn-outline-secondary"> <i class="fa fa-pencil"></i> </button>
+                        class="btn-outline-info btn btn-sm btn-outline-secondary "> <i class="fa fa-pencil"></i> </button>
                       <button onclick="modal_del_plano(<?= $plano->id; ?>);" title="<?= $idioma->excluir; ?>" type="button"
                         class="btn-outline-danger btn btn-sm  "> <i class="fa fa-trash"></i> </button>
 

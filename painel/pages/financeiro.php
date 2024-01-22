@@ -51,7 +51,7 @@
               <div class="col-md-12">
                 <h1 class="h2 h2-cell">Financeiro</h1>
                 <div style="margin-bottom:10px!important;" class="btn-toolbar mb-2 mb-md-0">
-                  <div class="btn-group mr-2">
+                  <div class="btn-group mr-2 fullWidth allHeight" style="margin-right: 0px !important;">
                     <button onclick="location.href='graphics';" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-line-chart" ></i> Avançado <?php if($plano_usergestor->financeiro_avan == 0){ echo "<i class='text-primary fa fa-star' ></i>"; }?></button>
                      &nbsp;&nbsp;
                     <button <?php if($plano_usergestor->financeiro_avan == 0){ echo "onclick=\"alert('Faça upgrade');location.href='cart?upgrade';\""; }else{ echo "onclick=\"$('#modal_export_financeiro').modal('show');\""; } ?>  type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download" ></i> Exportar <?php if($plano_usergestor->financeiro_avan == 0){ echo "<i class='text-primary fa fa-star' ></i>"; }?></button>
@@ -76,14 +76,14 @@
                         <div class="text-center card-head">
                           <span class="badge badge-secondary" >Valor Atual: <i class="fa fa-calendar" ></i> <?= $financeiro_class->text_mes(date('m'),true); ?></span>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="display: flex; justify-content: center;">
 
                           <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-6" style="display: flex; justify-content: center;">
                                 <!-- <h4>$cx_at EM PROGRESSO</h4> -->
                                 <h4><?= $moeda->simbolo; ?> <?= $financeiro_class->convertMoney(2,$cx_at); ?></h4>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-6" style="display: flex; justify-content: center;">
                                 <h2 class="text-secondary" ><i class="fa fa-bank" ></i></h2>
                               </div>
                           </div>
@@ -97,13 +97,13 @@
                         <div class="text-center card-head">
                           <span class="badge badge-secondary" >Entrada: <i class="fa fa-calendar" ></i> <?= $financeiro_class->text_mes(date('m'),true); ?></span>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="display: flex; justify-content: center;">
 
                           <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-6" style="display: flex; justify-content: center;">
                               <h4><?= $moeda->simbolo; ?> <?= $valores_mov[0]; ?></h4>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-6" style="display: flex; justify-content: center;">
                                 <h2 class="text-success" ><i class='fa fa-arrow-up' ></i></h2>
                               </div>
                           </div>
@@ -117,13 +117,13 @@
                         <div class="text-center card-head">
                           <span class="badge badge-secondary" >Saída: <i class="fa fa-calendar" ></i> <?= $financeiro_class->text_mes(date('m'),true); ?></span>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="display: flex; justify-content: center;">
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6" style="display: flex; justify-content: center;">
                                 <h4><?= $moeda->simbolo; ?> <?= $valores_mov[1]; ?></h4>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6" style="display: flex; justify-content: center;">
                                   <h2 class="text-danger" ><i class='fa fa-arrow-down' ></i></h2>
                                 </div>
                             </div>
@@ -207,8 +207,8 @@
                       <td><?= $mov->data.' - '.$mov->hora;?></td>
                       <td><a style="cursor:pointer;" class="text-info" onclick="ver_nota_completa(<?= $mov->id; ?>);" ><?= substr($mov->nota,0,20).' <span style="font-size:10px;" >[... ver mais]</span> '; ?></a></td>
                       <td>
-                        <button onclick="edite_movimentacao(<?= $mov->id; ?>);" title="EDITAR" type="button" class="btn-outline-info btn btn-sm"> <i class="fa fa-pencil" ></i> </button>
-                        <button onclick="modal_del_mov(<?= $mov->id; ?>);" title="REMOVER" type="button" class="btn-outline-danger btn btn-sm"> <i class="fa fa-trash" ></i> </button>
+                        <button onclick="edite_movimentacao(<?= $mov->id; ?>);" title="EDITAR" type="button" class="btn-outline-info btn w-100 d-md-block" style="padding: 0px;"> <i class="fa fa-pencil " ></i> </button>
+                        <button onclick="modal_del_mov(<?= $mov->id; ?>);" title="REMOVER" type="button" class="btn-outline-danger btn w-100 d-md-block" style="padding: 0px;"> <i class="fa fa-trash " ></i> </button>
 
                       </td>
                     </tr>

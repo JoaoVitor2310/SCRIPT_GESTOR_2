@@ -38,7 +38,7 @@
 
         <div class="">
 
-            <div style="padding: 10px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;" class="card row" >
+            <div style="-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;" class="card row full" >
 
                 <!-- title and btns -->
                 <div class="col-md-6">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="btn-toolbar mb-2 mb-md-0">
-                      <div class="btn-group mr-2">
+                      <div class="btn-group mr-2 fullWidth allHeight">
                        <?php if($getChatbot){ ?>
                         <button onclick="$('#primeiros_passos_bot').modal('show');" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-fast-forward" ></i> Passo-a-passo</button>
                         <a target="_blank" href="https://youtu.be/1AsS04QFB4s?si=FIDrMNARKlMre6M6" class="btn btn-sm btn-outline-secondary"><i class="fa fa-play" ></i> Assistir Tutorial</a>
@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="col-md-3">
 
-                            <div class="row list_contacts" style="overflow-y:scroll;max-height:500px;margin-top:25px;">
+                            <div class="row list_contacts" style="overflow-y:scroll;max-height:500px;">
 
                                 <?php if($getChatbot == false){ ?>
                                     <div class="col-md-12 text-center"><p class="text-center" ><button class="btn btn-lg btn-primary" onclick="location.href='settings_chatbot';" >Primeiros passos</button></p></div>
@@ -109,8 +109,8 @@
                             </div>
 
                         </div>
-                        <div class="col-md-9">
-                             <section class="msger">
+                        <div class="col-md-9 no-padding" style="display: flex; justify-content: center;">
+                             <section style="max-width: 75%;" class="msger">
 
                                   <header class="msger-header">
                                     <div class="msger-header-title">
@@ -124,7 +124,7 @@
                                   </header>
 
                                   <main class="msger-chat">
-                                          <center><img width="300" src="https://gestormaster.top/painel/img/robot_default.png" /></center>
+                                          <img style="max-width: 80%" src="https://gestormaster.top/painel/img/robot_default.png" />
                                   </main>
 
                                   <!-- <form class="msger-inputarea">

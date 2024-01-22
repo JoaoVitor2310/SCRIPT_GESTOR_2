@@ -42,24 +42,28 @@
               die;
             }
             
-              // verificar data do vencimento
-              $explodeData_user  = explode('/',$cli_rev->vencimento);
-              $explodeData2_user = explode('/',date('d/m/Y'));
-              $dataVen_user      = $explodeData_user[2].$explodeData_user[1].$explodeData_user[0];
-              $dataHoje_user     = $explodeData2_user[2].$explodeData2_user[1].$explodeData2_user[0];
+            // verificar data do vencimento
+            $explodeData_user  = explode('/',$cli_rev->vencimento);
+            $explodeData2_user = explode('/',date('d/m/Y'));
+            $dataVen_user      = $explodeData_user[2].$explodeData_user[1].$explodeData_user[0];
+            $dataHoje_user     = $explodeData2_user[2].$explodeData2_user[1].$explodeData2_user[0];
             
-              if($dataVen_user == $dataHoje_user){
-                  $ven_user = date('d/m/Y', strtotime('+'.$meses.' months', strtotime(date('d-m-Y'))));;
-              }else if($dataHoje_user > $dataVen_user){
-                  $ven_user = date('d/m/Y', strtotime('+'.$mesess.' months', strtotime(date('d-m-Y'))));;
-              }else{
-                  $ven_user = date('d/m/Y', strtotime('+'.$meses.' months', strtotime( $explodeData_user[0].'-'.$explodeData_user[1].'-'.$explodeData_user[2] )));;
-              }
+            
+            if($dataVen_user == $dataHoje_user){ // Vence hoje
+              $ven_user = date('d/m/Y', strtotime('+'.$meses.' months', strtotime(date('d-m-Y'))));;
+            }else if($dataHoje_user > $dataVen_user){ // Já venceu
+              $ven_user = date('d/m/Y', strtotime('+'.$meses.' months', strtotime(date('d-m-Y'))));;
+            }else{ // Ainda não venceu
+              $ven_user = date('d/m/Y', strtotime('+'.$meses.' months', strtotime( $explodeData_user[0].'-'.$explodeData_user[1].'-'.$explodeData_user[2] )));;
+            }
+              
               
               $creditos_gasto = ($plano->creditos*$meses);
-               
-             if($users->renew_rev($plano->id,$ven_user,$cli_rev->id)){
-               $revenda->creditos_rev_change($_SESSION['SESSION_USER']['id'],$creditos_gasto);
+              
+              
+              if($users->renew_rev($plano->id,$ven_user,$cli_rev->id)){
+                $revenda->creditos_rev_change($_SESSION['SESSION_USER']['id'],$creditos_gasto);
+                
                echo '{"erro":false,"msg":"Renovado"}';
                die;
              }else{

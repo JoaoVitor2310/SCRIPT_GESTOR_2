@@ -69,7 +69,6 @@
              <tr id="tr_<?= $cli->id; ?>" class="trs " >
                  
                <td>
-                   <span class="bg-<?= $colorCate; ?>">&nbsp;</span>
                    <?= $cli->nome; ?>
                <?php if($cli->identificador_externo != NULL && $cli->identificador_externo != ""){?>
                     <br /><span style="font-size: 13px; margin: 0px;top: 0px!important;position: relative;color: gray;font-style: italic;">#<?= $cli->identificador_externo; ?></span>
@@ -91,15 +90,15 @@
                  echo $nomeCategoria ? $nomeCategoria : 'Nenhuma';
 
                ?></td>
-               <td><?php if(@$cli->telefone == "vazio"){ echo @$cli->telefone." <i style='font-size:10px;cursor:pointer;' title='".@$idioma->adicione_um_telefone."' class='text-danger fa fa-warning' ></i>";}else{ echo '<a target="_blank" href="http://wa.me/'.@$cli->telefone.'" > <i class="fa fa-whatsapp"></i> '.@$cli->telefone.'</a>'; } ?></td>
+               <td><?php if(@$cli->telefone == "vazio"){ echo @$cli->telefone." <i style='font-size:10px;cursor:pointer;' title='".@$idioma->adicione_um_telefone."' class='text-danger fa fa-warning' ></i>";}else{ echo '<a target="_blank" class="break-line" href="http://wa.me/'.@$cli->telefone.'" > <i class="fa fa-whatsapp"></i> '.@$cli->telefone.'</a>'; } ?></td>
                <td><?= $ven; ?></td>
                <td><?php if($plano){ echo $plano->nome; }else{ echo "<i style='cursor:pointer;' title='ADICIONE UM PLANO' class='text-danger fa fa-warning' ></i> "; }  ?></td>
                <td>
-                 <button onclick="modal_send_zap(<?= $cli->id; ?>,'<?= $cli->nome; ?>','<?= $cli->telefone; ?>',<?php if($plano){ echo $plano->id; }else{ echo 'no'; } ?>);" title="COBRANÇA" type="button" class="btn-outline-primary btn btn-sm"  id="" > <i class="fa fa-paper-plane" ></i> </button>
-                 <button <?php if($plano == false){ echo 'disabled'; } ?> onclick="renew_cli(<?= $cli->id; ?>,<?= $cli->id_plano; ?>);" title="RENOVAR" type="button" class="btn-outline-primary btn btn-sm  "  id="btn_renew_<?= $cli->id; ?>" > <i id="_btn_renew_<?= $cli->id; ?>" class="fa fa-refresh" ></i> </button>
-                 <button onclick="edite_cliente(<?= $cli->id; ?>);" title="EDITAR" type="button" class="btn-outline-primary btn btn-sm btn-outline-primary"> <i class="fa fa-pencil" ></i> </button>
-                 <button onclick="modal_del_cli(<?= $cli->id; ?>);" title="EXCLUIR" type="button" class="btn-outline-primary btn btn-sm  "> <i class="fa fa-trash" ></i> </button>
-                 <button <?php if(@$plano_usergestor->faturas_cliente == 1){ ?> onclick="modal_faturas_cli(<?= $cli->id; ?>,'<?= $cli->nome; ?>','<?= $cli->email; ?>');" <?php }else{ echo 'onclick="alert(\'Faça Upgrade\');location.href=\'cart?upgrade\';"'; } ?> title="<?= @$idioma->registr_de_fats; ?>" type="button" class="btn-outline-primary btn btn-sm  "> <i class="fa fa-file" ></i> </button>
+                 <button onclick="modal_send_zap(<?= $cli->id; ?>,'<?= $cli->nome; ?>','<?= $cli->telefone; ?>',<?php if($plano){ echo $plano->id; }else{ echo 'no'; } ?>);" title="COBRANÇA" type="button" class="btn-outline-primary w-100 d-md-block"  id="" > <i class="fa fa-paper-plane" ></i> </button>
+                 <button <?php if($plano == false){ echo 'disabled'; } ?> onclick="renew_cli(<?= $cli->id; ?>,<?= $cli->id_plano; ?>);" title="RENOVAR" type="button" class="btn-outline-primary w-100 d-md-block  "  id="btn_renew_<?= $cli->id; ?>" > <i id="_btn_renew_<?= $cli->id; ?>" class="fa fa-refresh" ></i> </button>
+                 <button onclick="edite_cliente(<?= $cli->id; ?>);" title="EDITAR" type="button" class="btn-outline-primary w-100 d-md-block btn-outline-primary"> <i class="fa fa-pencil" ></i> </button>
+                 <button onclick="modal_del_cli(<?= $cli->id; ?>);" title="EXCLUIR" type="button" class="btn-outline-primary w-100 d-md-block  "> <i class="fa fa-trash" ></i> </button>
+                 <button <?php if(@$plano_usergestor->faturas_cliente == 1){ ?> onclick="modal_faturas_cli(<?= $cli->id; ?>,'<?= $cli->nome; ?>','<?= $cli->email; ?>');" <?php }else{ echo 'onclick="alert(\'Faça Upgrade\');location.href=\'cart?upgrade\';"'; } ?> title="<?= @$idioma->registr_de_fats; ?>" type="button" class="btn-outline-primary w-100 d-md-block  "> <i class="fa fa-file" ></i> </button>
 
                </td>
              </tr>

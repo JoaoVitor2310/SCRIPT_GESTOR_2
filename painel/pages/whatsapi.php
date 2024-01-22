@@ -39,7 +39,7 @@ $grupo_beta = $gestor_class->get_user_grupo_beta($_SESSION['SESSION_USER']['emai
 
     <div
       style="padding: 10px;-webkit-box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);box-shadow: 0px 0px 16px -2px rgb(0 0 0 / 84%);width: 99%;"
-      class="card row">
+      class="card row full">
 
 
       <div class="col-md-6">
@@ -335,11 +335,7 @@ $grupo_beta = $gestor_class->get_user_grupo_beta($_SESSION['SESSION_USER']['emai
 
       </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          <?= $idioma->fechar; ?>
-        </button>
-      </div>
+     
     </div>
 
   </div>
