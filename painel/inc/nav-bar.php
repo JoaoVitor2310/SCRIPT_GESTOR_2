@@ -47,12 +47,7 @@
       <!-- sidebar-header  -->
       
       <div class="sidebar-menu">
-       <!--<div class="row">-->
-       <!--     <div class="col-md-12">-->
-       <!--         <a target="_blank" href="https://t.me/joinchat/U_FagQKJgrUEDt2V" ><img src="https://uploaddeimagens.com.br/images/003/325/796/full/321.png?1625700731" width="100%" /></a>-->
-                <!--<a target="_blank" href="https://gestormaster.top/vitalicio/" ><img src="https://uploaddeimagens.com.br/images/003/327/007/full/VITALICIO-SOCIO.png?1625769066" width="100%" /></a>-->
-       <!--     </div>-->
-       <!-- </div>-->
+     
     
         <ul>
           <li class="header-menu">
@@ -70,7 +65,6 @@
             <a href="whatsapi">
               <i class="fa fa-whatsapp"></i>
               <span>Conectar Whatsapp</span>
-              <!-- <span class="badge badge-pill badge-success">new</span> -->
                
             </a>
           </li>
@@ -103,46 +97,12 @@
             </a>
           </li>
           
-           <!-- <li id="notify_gestor" >
-            <a href="notify_gestor">
-              <i class="fa fa-bell"></i>
-              <span> Notify Gestor</span>
-            </a>
-          </li> -->
-          
           <li id="gateways" >
             <a href="gateways">
               <i class="fa fa-dollar"></i>
               <span> Gateways de pagamento</span>
             </a>
           </li>
-          
-          <!-- <li id="integracoes" >
-            <a href="integracoes">
-              <i class="fa fa-code"></i>
-              <span> Integrações</span>
-            </a>
-          </li> -->
-          
-          <!-- <li id="marketing" class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-puzzle-piece"></i>
-              <span>Marketing</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="linkzap">Link Whatsapp</a>
-                </li>
-                <li>
-                  <a href="traffic">Tráfego em Site</a>
-                </li>
-                <li>
-                  <a href="flyer">Criação de banner</a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
           
           <li class="header-menu">
             <span>Extras</span>
@@ -161,31 +121,26 @@
               <span>Revenda</span>
             </a>
           </li>
-          
-          <!-- <li id="comunidade" >-->
-          <!--  <a href="comunidade" >-->
-          <!--    <i class="fa fa-comments"></i>-->
-          <!--    <span>Comunidade </span>-->
-          <!--  </a>-->
-          <!--</li>-->
-          
            <li id="cart" >
             <a href="cart"  >
               <i class="fa fa-credit-card"></i>
               <span>Assinatura</span>
             </a>
           </li>
-          
           <li id="pagamentos" >
             <a href="pagamentos"  >
               <i class="fa fa-coffee"></i>
               <span>Pagamentos</span>
             </a>
           </li>
-
-
           <li class="header-menu">
             <span>Suporte</span>
+          </li>
+          <li>
+            <a href="https://h.gestormaster.top/Gestor%20Master.apk" target="_blank" >
+              <i class="fa fa-android"></i>
+              <span>Aplicativo</span>
+            </a>
           </li>
           <li>
             <a href="https://t.me/gestormaster" target="_blank" >
@@ -205,12 +160,7 @@
               <span>Contato</span>
             </a>
           </li>
-          <!--<li>-->
-          <!--  <a href="https://wa.me/<?= $atendente[rand(1,2)]?>" target="_blank">-->
-          <!--    <i class="fa fa-whatsapp"></i>-->
-          <!--    <span>Suporte Whatsapp</span>-->
-          <!--  </a>-->
-          <!--</li>-->
+         
         </ul>
       </div>
       <!-- sidebar-menu  -->
