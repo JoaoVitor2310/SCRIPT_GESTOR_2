@@ -361,6 +361,7 @@ function verific_inputs_add_cli2() {
   cli_add.id_plano = $("#id_plano_cli_rev").val();
   cli_add.vencimento = $("#vencimento_cli_rev").val();
   cli_add.qtd_cred = $("#qtd_cred_rev").val();
+  cli_add.teste = $("#planoTeste").val();
 
   var dados = JSON.stringify(cli_add);
   $("#json_inputs").val(dados);

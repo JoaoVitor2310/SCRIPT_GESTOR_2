@@ -507,7 +507,6 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                         <?php } ?>
                       </td>
                       <td>
-                        <!-- jay11 -->
                         <?= $nomeCategoria ? $nomeCategoria : 'Nenhuma' ?>
                       </td>
                       <td class="wpp-td">
@@ -1588,21 +1587,19 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
       $("#btn_send_zap").html('Aguarde <i class="fa fa-refresh fa-spin" ></i>');
 
       var id_cli = $("#id_cli_send").val();
-      var text_to = $("textarea.emoji-wysiwyg-editor").text();
+      var text_to = $("div.emoji-wysiwyg-editor").text();
       let phone = $("#zap_cli").val();
 
-      console.log(text_to);
+      // console.log(text_to);
 
       $.post('../control/control.resend_cobranca.php', { text_to, id_cli, }, function (data) {
         var ResJson = JSON.parse(data);
         console.log(ResJson);
 
         if (ResJson.erro == false) {
-
-          // window.open(ResJson.link, '_blank');
           alert('Sua mensagem foi adicionada na fila e será enviada!');
           location.href = "";
-          $("#btn_send_zap").html('Enviado.');
+          $("#btn_send_zap").html('Enviado');
 
         } else {
           alert(ResJson.msg);

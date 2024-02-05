@@ -422,10 +422,19 @@ function create_fat() {
 }
 
 function modal_create_fat() {
-    var a = $("#id_cli_fat").val(),
-        e = $("#nome_cli_fat").val(),
+    console.log("Função modal_create_fat() chamada com sucesso!");
+    $("#modal_fat_cli").modal("toggle");
+    $("#modal_create_fat").modal("show");
+    var a = $("#id_cli_fat").val();
+        e = $("#nome_cli_fat").val();
         o = $("#email_cli_fat").val();
-    "" == o ? $("#email_cli_view").val("[sem email]") : $("#email_cli_view").val(o), $("#id_cli_new_fat").val(a), $("#nome_cli_view").val(e), $("#nome_cli_new_fat").val(e), $("#email_new_fat").val(o), $("#modal_fat_cli").modal("toggle"), $("#modal_create_fat").modal("show"), $("#div_move_fat").hide(100), $("#move_fatura").prop("checked", !1)
+    o == "" ? $("#email_cli_view").val("[sem email]") : $("#email_cli_view").val(o);
+    $("#id_cli_new_fat").val(a);
+    $("#nome_cli_view").val(e);
+    $("#nome_cli_new_fat").val(e);
+    $("#email_new_fat").val(o);
+    $("#div_move_fat").hide(100);
+    $("#move_fatura").prop("checked", !1);
 }
 
 function cancel_new_fat() {

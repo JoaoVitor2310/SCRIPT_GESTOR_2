@@ -101,7 +101,7 @@
 
 
           <div class="row">
-          	<div class="col-12">
+          	<div class="col-12" style="padding-left: 0; padding-right: 0;">
           		<div class="card">
           			<div class="card-header">
           				<h4 class="card-title">Últimas faturas</h4>
@@ -114,8 +114,8 @@
           				</div>
           			</div>
           			<div class="card-content collapse show">
-          				<div class="card-body">
-          					<p class="card-text"> Arraste para o lado para ver as ações no celular</p>
+          				<div class="card-body" style="padding: 0px">
+          					<p class="card-text" style="padding: 21px"> Arraste para o lado para ver as ações no celular</p>
           					<?php 
           					  
           					  if(isset($msg)){
@@ -130,11 +130,11 @@
           								    <?php if($plano_gate == 1 && $mp_credenciais == true || $picpay_gate == true || $banco_gate == true && $fat->status == "Pendente"){
                                                 echo '<th>Pagar</th>';
                                             } ?>
+                            <th>Comprovante</th>
           									<th>Valor</th>
           									<th>Status</th>
           									<th>Data</th>
                                             <th>Plano</th>
-                                            <th>Comprovante</th>
                                     		<th>#</th>
 
           								</tr>
@@ -162,10 +162,6 @@
                                                     echo '<td><button class="'.$fat->ref.' btn btn-sm btn-info" onclick="paymodal('.$fat->id.');" >Pagar</button></td>';
                                                 } ?>
             									
-            									<td style="font-size:12px;">R$ <?= $fat->valor; ?></td>
-            									<td><?= $status; ?></td>
-            									<td><?= $fat->data; ?></td>
-                                                <td><?= $plano->nome; ?></td>
                                                 <td><?php 
                                                 // Fazer busca para saber se já tem 1 ou mais comprovantes em comprovantes_fat_cli com o id do cliente, se tiver, não deixar anexar comprovante
                                                 
@@ -209,6 +205,10 @@
                                                 //jay11
 
                                                 ?></td>
+            									<td style="font-size:12px;">R$ <?= $fat->valor; ?></td>
+            									<td><?= $status; ?></td>
+            									<td><?= $fat->data; ?></td>
+                                                <td><?= $plano->nome; ?></td>
                                                 <th scope="row"><?= $fat->id; ?></th>
                                                
             								</tr>

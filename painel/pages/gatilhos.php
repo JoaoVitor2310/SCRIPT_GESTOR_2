@@ -80,6 +80,11 @@
                           <td class="text-right" ><b class="text-danger" >{plano_link}</b></td>
                           <td class="text-left" >Link de pagamento (É necessário credenciais MP e Área do cliente ativa)</td>
                         </tr>
+                        
+                        <tr>
+                          <td class="text-right" ><b class="text-danger" >{dias_vencimento}</b></td>
+                          <td class="text-left" >Números de dias que faltam para vencer o acesso do cliente</td>
+                        </tr>
             
             
                       </tbody>

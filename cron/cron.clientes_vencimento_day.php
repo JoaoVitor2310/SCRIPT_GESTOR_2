@@ -30,8 +30,15 @@
         // $link_plano = 'https://gestormaster.top/gmaster/p/'.str_replace('=','',base64_encode($plano->id));
         $link_plano = 'https://cliente.' . $gestor_c->get_options("dominio") . '/clientes_' . $plano->id_user; // Link do vendedor que leva pro cliente logar na sua área.
 
-        $ar1  = array('{senha_cliente}','{nome_cliente}','{primeiro_nome_cliente}','{email_cliente}','{telefone_cliente}','{vencimento_cliente}','{plano_valor}','{data_atual}','{plano_nome}','{plano_link}');
-        $ar2  = array($user->senha,$user->nome,explode(' ',$user->nome)[0],$user->email,$user->telefone,$user->vencimento,$plano->valor,date('d/m/Y'),$plano->nome,$link_plano);
+        $dataVencimento = DateTime::createFromFormat('d/m/Y', $user->vencimento);
+        $dataAtual = new DateTime();
+
+        // // Calcula a diferença em dias
+        $dias_vencimento = $dataAtual->diff($dataVencimento)->days;
+
+
+        $ar1  = array('{senha_cliente}','{nome_cliente}','{primeiro_nome_cliente}','{email_cliente}','{telefone_cliente}','{vencimento_cliente}','{plano_valor}','{data_atual}','{plano_nome}','{plano_link}', '{dias_vencimento}');
+        $ar2  = array($user->senha,$user->nome,explode(' ',$user->nome)[0],$user->email,$user->telefone,$user->vencimento,$plano->valor,date('d/m/Y'),$plano->nome,$link_plano, $dias_vencimento);
         $text = str_replace($ar1,$ar2,$plano->template_zap);
 
         $ar1   = array('+',')','(',' ','-');

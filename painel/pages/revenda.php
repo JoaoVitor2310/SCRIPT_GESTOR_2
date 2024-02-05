@@ -262,9 +262,9 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
                   <?php
                   if (@$rev->telefone == "vazio") {
                     echo @$rev->telefone . " <i style='font-size:10px;cursor:pointer;' title='Add cell' class='text-danger fa fa-warning' ></i>";
-                }else{
-                  echo '<a target="_blank" class="break-line" href="http://wa.me/' . $rev->ddi . $rev->telefone . '" >' . $rev->ddi . $rev->telefone . '</a>';
-                }
+                  } else {
+                    echo '<a target="_blank" class="break-line" href="http://wa.me/' . $rev->ddi . $rev->telefone . '" >' . $rev->ddi . $rev->telefone . '</a>';
+                  }
                   ?>
 
                 </td>
@@ -564,6 +564,13 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
                   <?php }
                 } ?>
 
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control" id="planoTeste" name="planoTeste">
+              <option value="">Plano teste(EM DESENVOLVIMENTO)</option>  
+              <option value="true">Teste ativado</option>
+                <option value="false">Teste desativado</option>
               </select>
             </div>
           </div>
