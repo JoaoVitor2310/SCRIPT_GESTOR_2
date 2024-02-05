@@ -540,19 +540,35 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, não �
               <select onchange="info_p();$('#vencimento_cli_rev').val('');$('#qtd_cred_rev').val(0);"
                 class="form-control" name="id_plano_cli_rev" id="id_plano_cli_rev">
 
-                <!-- <option value="">Selecionar plano</option> -->
-                <option value="patrao">Plano patrão(padrão)</option>
+                <option value="">Selecionar plano</option>
 
-              </select>
-            </div>
-            <div class="form-group">
-              <select class="form-control" id="planoTeste" name="planoTeste">
-              <option value="test">Teste grátis</option>
+                <?php
+
+                if ($planos_gestor) {
+
+                  while ($plano = $planos_gestor->fetch(PDO::FETCH_OBJ)) {
+
+                    ?>
+
+                    <option value="<?= $plano->id; ?>"> [
+                      <?= $plano->creditos; ?> ]
+                      <?php if ($plano->creditos > 1) {
+                        echo "créditos";
+                      } else {
+                        echo "crédito";
+                      } ?> (R$
+                      <?= $plano->valor; ?> preço sugerido) |
+                      <?= $plano->nome; ?>
+                    </option>
+
+                  <?php }
+                } ?>
+
               </select>
             </div>
           </div>
 
-          <!-- <div class="col-md-12">
+          <div class="col-md-12">
             <div class="form-group">
               <select onchange="calc_qtd_credits_add_cli();" class="form-control" name="vencimento_cli_rev"
                 id="vencimento_cli_rev">
@@ -574,22 +590,21 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, não �
 
               </select>
             </div>
-          </div> -->
+          </div>
 
-          <!-- <div style="margin-bottom:20px;" class="input-group  col-md-12">
+          <div style="margin-bottom:20px;" class="input-group  col-md-12">
             <input type="text" id="qtd_cred_rev" disabled name="qtd_cred_rev" class="form-control" value="0"
               placeholder="">
             <div class="input-group-append">
               <span class="input-group-text" id=""> créditos </span>
             </div>
-          </div> -->
+          </div>
 
           <input type="hidden" id="json_inputs" name="json_inputs" value="">
-          <!-- <input id="json_inputs" name="json_inputs" value=""> -->
 
           <div class="col-md-12">
             <div class="form-group text-center">
-              <button id="btn_add_cli_rev" style="width:100%;" onclick="add_new_cli();" type="button"
+              <button disabled id="btn_add_cli_rev" style="width:100%;" onclick="add_new_cli();" type="button"
                 class="btn btn-primary" name="button">Adicionar</button>
               <span style="margin-top:6px;" id="response_add_new_cli_rev"></span>
             </div>

@@ -46,9 +46,14 @@ if ($list_users) {
         $arrayDiasVencimento = array_map('intval', str_split((string) $user->dias_aviso_antecipado));
         $diaDeAviso = false;
 
+        
         if (is_array($arrayDiasVencimento) && count($arrayDiasVencimento) > 1) {
           for ($i = 0; $i < count($arrayDiasVencimento); $i++) {
-            $data = date('d/m/Y', strtotime('-' . $arrayDiasVencimento[$i] . ' days', strtotime($data_format))); // Converte a data
+            if($arrayDiasVencimento[$i] == 9){ // 1 dia após
+              $data = date('d/m/Y', strtotime('+1 day', strtotime($data_format)));
+            }else{
+              $data = date('d/m/Y', strtotime('-' . $arrayDiasVencimento[$i] . ' days', strtotime($data_format)));
+            }
             if ($data == date('d/m/Y')) { // Compara pra saber se hj é dia de aviso
               $diaDeAviso = true;
             }

@@ -125,6 +125,13 @@ if ($plano_usergestor->gateways) {
                   </label>
                 </div>
               <?php } ?>
+              <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="dias_aviso_antecipado_pos_1_dia"
+                    name="dias_aviso_antecipado[]" value="9" <?php echo in_array(9, $arrayDeDigitos) ? 'checked' : ''; ?>>
+                    <label class="form-check-label" for="dias_aviso_antecipado_pos_1_dia">
+                    1 dia APÓS vencimento do cliente
+                  </label>
+                </div>
             </div>
           </div>
 

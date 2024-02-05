@@ -69,7 +69,7 @@
          $indicado = $_SESSION['afiliado'];
       }
       
-      if($user->create($dados,'00/00/0000',0,$id_rev,$indicado,$af)){
+      if($user->create($dados,'00/00/0000',7,$id_rev,$indicado,$af)){
 
 
         $request['email'] = $dados->email;
@@ -111,7 +111,7 @@
               
               
              $idU     = $return->id;
-             $idPlano = 6;
+             $idPlano = 7; // 7 para o plano patrão. jay11
 
              $timestamp      = strtotime('+3 days',strtotime(date('d-m-Y')));
              $novoVencimento = date('d/m/Y', $timestamp);

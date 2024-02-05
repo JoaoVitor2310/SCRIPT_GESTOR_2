@@ -220,6 +220,7 @@ function calc_qtd_credits_add_cli() {
 }
 
 function add_new_cli() {
+  console.log('Clicado');
 
   $("#btn_add_cli_rev").prop('disabled', true);
   $("#btn_add_cli_rev").html('<i class="fa fa-refresh fa-spin" ></i> Aguarde');
@@ -229,6 +230,7 @@ function add_new_cli() {
   $.post('../control/control.add_cli_rev.php', { add_cli: '', dados: json_cli }, function (data) {
 
     var obj = JSON.parse(data);
+    console.log(obj);
 
     if (typeof obj != "undefined") {
 
@@ -358,15 +360,17 @@ function verific_inputs_add_cli2() {
   cli_add.ddi = $("#ddi_cli_rev").val();
   cli_add.telefone = $("#telefone_cli_rev").val();
   cli_add.senha = $("#senha_cli_rev").val();
-  cli_add.id_plano = $("#id_plano_cli_rev").val();
+  // cli_add.id_plano = $("#id_plano_cli_rev").val();
+  cli_add.id_plano = 7; // 7 é o id do plano patrão, que será sempre o padrão
   cli_add.vencimento = $("#vencimento_cli_rev").val();
   cli_add.qtd_cred = $("#qtd_cred_rev").val();
-  cli_add.teste = $("#planoTeste").val();
+  // cli_add.teste = $("#planoTeste").val();
 
   var dados = JSON.stringify(cli_add);
   $("#json_inputs").val(dados);
 
-  if (cli_add.nome != "" && cli_add.email != "" && cli_add.ddi != "" && cli_add.telefone != "" && cli_add.senha != "" && cli_add.id_plano != "" && cli_add.vencimento != "" && cli_add.qtd_cred > 0) {
+  // if (cli_add.nome != "" && cli_add.email != "" && cli_add.ddi != "" && cli_add.telefone != "" && cli_add.senha != "" && cli_add.id_plano != "" && cli_add.vencimento != "" && cli_add.qtd_cred > 0) {
+  if (cli_add.nome != "" && cli_add.email != "" && cli_add.ddi != "" && cli_add.telefone != "" && cli_add.senha != "" && cli_add.id_plano != "" ) {
     $("#btn_add_cli_rev").prop('disabled', false);
   } else {
     $("#btn_add_cli_rev").prop('disabled', true);
