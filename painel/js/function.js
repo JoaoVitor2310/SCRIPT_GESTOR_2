@@ -421,21 +421,21 @@ function create_fat() {
     })
 }
 
-function modal_create_fat() {
-    console.log("Função modal_create_fat() chamada com sucesso!");
-    $("#modal_fat_cli").modal("toggle");
-    $("#modal_create_fat").modal("show");
-    var a = $("#id_cli_fat").val();
-        e = $("#nome_cli_fat").val();
-        o = $("#email_cli_fat").val();
-    o == "" ? $("#email_cli_view").val("[sem email]") : $("#email_cli_view").val(o);
-    $("#id_cli_new_fat").val(a);
-    $("#nome_cli_view").val(e);
-    $("#nome_cli_new_fat").val(e);
-    $("#email_new_fat").val(o);
-    $("#div_move_fat").hide(100);
-    $("#move_fatura").prop("checked", !1);
-}
+// function modal_create_fat() {
+//     console.log("Função modal_create_fat() chamada com sucesso!");
+//     $("#modal_fat_cli").modal("toggle");
+//     $("#modal_create_fat").modal("show");
+//     var a = $("#id_cli_fat").val(),
+//         e = $("#nome_cli_fat").val(),
+//         o = $("#email_cli_fat").val();
+//     o == "" ? $("#email_cli_view").val("[sem email]") : $("#email_cli_view").val(o);
+//     $("#id_cli_new_fat").val(a);
+//     $("#nome_cli_view").val(e);
+//     $("#nome_cli_new_fat").val(e);
+//     $("#email_new_fat").val(o);
+//     $("#div_move_fat").hide(100);
+//     $("#move_fatura").prop("checked", !1);
+// }
 
 function cancel_new_fat() {
     modal_faturas_cli($("#id_cli_new_fat").val(), $("#nome_cli_new_fat").val(), $("#email_new_fat").val())
@@ -510,17 +510,35 @@ function edite_cliente(a) {
         id: a
     }, function (e) {
         var o = JSON.parse(e);
-        o.erro ? ($("#modal_edite_cliente").modal("toggle"), alert(o.msg)) : ($("#id_cli").val(a), $("#nome_cli").val(o.nome), $("#email_cli").val(o.email), $("#email_cli_atual").val(o.email), $("#telefone_cli").val(o.telefone), $("#identificador_externo_cli").val(o.identificador_externo), $("#categoria_cli_atual").val(o.categoria), $("#vencimento_cli").val(o.vencimento), $("#notas_cli").val(o.notas), $("#recebe_zap_cli").val(o.recebe_zap), $("#senha_cli").val(o.senha), $("#plano_cli").val(o.id_plano), "vazio" == o.telefone ? $("#telefone_cli").addClass("is-invalid") : $("#telefone_cli").removeClass("is-invalid"), "vazio" == o.email ? $("#email_cli").addClass("is-invalid") : $("#email_cli").removeClass("is-invalid"))
+        o.erro ? ($("#modal_edite_cliente").modal("toggle"), alert(o.msg)) : 
+        ($("#id_cli").val(a), 
+        $("#nome_cli").val(o.nome), 
+        $("#email_cli").val(o.email), 
+        $("#email_cli_atual").val(o.email),
+        // $("#telefone_cli").val(o.telefone),
+        $("#telefone_cli_edit").val(o.telefone.substring(2)),
+        $("#identificador_externo_cli").val(o.identificador_externo), $("#categoria_cli_atual").val(o.categoria), $("#vencimento_cli").val(o.vencimento), $("#notas_cli").val(o.notas), $("#recebe_zap_cli").val(o.recebe_zap), $("#senha_cli").val(o.senha), $("#plano_cli").val(o.id_plano), "vazio" == o.telefone ? $("#telefone_cli").addClass("is-invalid") : $("#telefone_cli").removeClass("is-invalid"), "vazio" == o.email ? $("#email_cli").addClass("is-invalid") : $("#email_cli").removeClass("is-invalid"))
     }), $("#modal_edite_cliente").modal("show")
 }
 
 function save_cli() {
     $("#btn_save_cli").prop("disabled", !0), $("#btn_save_cli").html('<i class="fa fa-spinner fa-spin"></i> Aguarde');
     var a = new Object;
-    a.nome = $("#nome_cli").val(), a.identificador_externo = $("#identificador_externo_cli").val(), a.categoria = $("#categoria_cli_atual").val(), a.email = $("#email_cli").val(), a.email_at = $("#email_cli_atual").val(), a.telefone = $("#telefone_cli").val(), a.vencimento = $("#vencimento_cli").val(), a.notas = $("#notas_cli").val(), a.plano = $("#plano_cli").val(), a.recebe_zap = $("#recebe_zap_cli").val(), a.id = $("#id_cli").val(), void 0 !== $("#senha_cli").val() ? a.senha = $("#senha_cli").val() : a.senha = Math.random();
+    a.nome = $("#nome_cli").val(), 
+    a.identificador_externo = $("#identificador_externo_cli").val(), 
+    a.categoria = $("#categoria_cli_atual").val(), 
+    a.email = $("#email_cli").val(), 
+    a.email_at = $("#email_cli_atual").val(); 
+    
+    // a.telefone = $("#telefone_cli").val(), 
+    let telefone = $("#ddi_cli_edit").val() + $("#telefone_cli_edit").val();
+    telefone = telefone.replace(/[\s()-]/g, '');
+    a.telefone = telefone;
+    
+    a.vencimento = $("#vencimento_cli").val(), a.notas = $("#notas_cli").val(), a.plano = $("#plano_cli").val(), a.recebe_zap = $("#recebe_zap_cli").val(), a.id = $("#id_cli").val(), void 0 !== $("#senha_cli").val() ? a.senha = $("#senha_cli").val() : a.senha = Math.random();
     var e = JSON.stringify(a);
+    // console.log(a);
     $.post("../control/control.post_data_clientes.php", { dados: e }, function (a) {
-        console.log(a);
         var e = JSON.parse(a);
         console.log(e);
         e.erro ? ($("#btn_save_cli").prop("disabled", !1), $("#btn_save_cli").html("Salvar"), $("#modal_edite_cliente").modal("toggle"), alert(e.msg)) : location.href = ""
@@ -540,9 +558,19 @@ function add_cli() {
     $("#btn_add_cli").prop("disabled", !0), $("#btn_add_cli").html('<i class="fa fa-spinner fa-spin"></i> Aguarde');
     var a = new Object;
     a.nome = $("#nome_cli_add").val(),
-        //  a.identificador_externo = $("#identificador_externo_cli_add").val(),
-        a.categoria = $("#categoria_cli_add").val(), a.email = $("#email_cli_add").val(), a.telefone = $("#telefone_cli_add").val(), a.vencimento = $("#vencimento_cli_add").val(), a.notas = $("#notas_cli_add").val(), a.recebe_zap = $("#recebe_zap_add").val(), $("#senha_add").val() ? a.senha = $("#senha_add").val() : a.senha = Math.random().toString(36).substring(0, 7), a.id_plano = $("#plano_cli_add").val();
+    //  a.identificador_externo = $("#identificador_externo_cli_add").val(),
+    a.categoria = $("#categoria_cli_add").val(), a.email = $("#email_cli_add").val();
+    // a.telefone = $("#telefone_cli_add").val(),
+    let telefone = $("#ddi_cli_add").val() + $("#telefone_cli_add").val();
+    telefone = telefone.replace(/[\s()-]/g, '');
+    a.telefone = telefone;
+    a.vencimento = $("#vencimento_cli_add").val(),
+        a.notas = $("#notas_cli_add").val(),
+        a.recebe_zap = $("#recebe_zap_add").val(),
+        $("#senha_add").val() ? a.senha = $("#senha_add").val() : a.senha = Math.random().toString(36).substring(0, 7), a.id_plano = $("#plano_cli_add").val();
+    console.log(a);
     var e = JSON.stringify(a);
+
     $.post("../control/control.add_clientes.php", {
         dados: e
     }, function (a) {

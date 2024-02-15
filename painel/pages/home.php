@@ -343,8 +343,9 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                         </td>
                         <td>
                           <button onclick="aprova_comp('<?= $comp['id_fat']; ?>');" title="APROVAR" type="button"
-                            class="btn-outline-success btn w-100 d-md-block" style="padding: 0px;" id="btn_aprova_comp_<?= $comp['id_fat']; ?>"> <i
-                              id="_btn_aprova_comp_<?= $comp['id_fat']; ?>" class="fa fa-check"></i></button>
+                            class="btn-outline-success btn w-100 d-md-block" style="padding: 0px;"
+                            id="btn_aprova_comp_<?= $comp['id_fat']; ?>"> <i id="_btn_aprova_comp_<?= $comp['id_fat']; ?>"
+                              class="fa fa-check"></i></button>
 
                           <button onclick="recusa_comp('<?= $comp['id_fat']; ?>');" title="RECUSAR" type="button"
                             class="btn-outline-info btn btn-outline-danger w-100 d-md-block" style="padding: 0px;"
@@ -497,7 +498,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                       class="trs <?= @$dataHoje; ?> <?= @$three . ' - ' . @$for . ' - ' . @$two . ' - ' . @$one; ?>">
 
                       <td>
-                        
+
                         <?= $cli->nome; ?>
                         <?php if ($cli->identificador_externo != NULL && $cli->identificador_externo != "") { ?>
                           <br /><span
@@ -547,8 +548,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                         <button <?php if ($plano_usergestor->faturas_cliente == 1) { ?>
                             onclick="modal_faturas_cli(<?= $cli->id; ?>,'<?= $cli->nome; ?>','<?= $cli->email; ?>');" <?php } else {
                           echo 'onclick="alert(\'' . $idioma->faca_upgrade_alert . '\');location.href=\'cart?upgrade\';"';
-                        } ?> title="<?= $idioma->registr_de_fats; ?>" type="button"
-                          class="btn-outline-primary w-100 d-md-block  ">
+                        } ?> title="<?= $idioma->registr_de_fats; ?>"
+                          type="button" class="btn-outline-primary w-100 d-md-block  ">
                           <i class="fa fa-file"></i> </button>
 
                       </td>
@@ -764,118 +765,150 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
 
-          <div class="col-md-6">
-            <p>DDI+DDD+NUM</p>
-            <input type="text" class="form-control margin" id="telefone_cli" placeholder="DDI+DDD+NUM" pattern="[0-9]+"
-              inputmode="numeric" oninput="validarNumeros(this)">
-            <!-- <small style="font-size:10px;" id="tellHelp" class="form-text text-muted">
-              <b>Aviso:</b><a
-                href="https://t.me/gestormaster/base-de-conhecimento/como-enviar-mensagens-automaticas-por-whatsapp/"
-                target="_blank">Tutorial</a>
-            </small> -->
-          </div>
+            <div class="col-md-12">
 
-          <div class="col-md-6">
-            <label style="display: inline-block">Data de vencimento</label>
-            <input min="<?= date('Y-m-d'); ?>" type="date" class="form-control margin" id="vencimento_cli"
-              placeholder="<?= $idioma->vencimento; ?>">
-          </div>
+              <div style="margin-bottom:20px; padding-left: 0px; padding-right: 0px; display: block;"
+                class="input-group col-md-12">
+                <span style="height:10px!important;"></span>
+                <div class="input-group-append">
+                  <input type="hidden" value="55" id="ddi_cli_edit" />
+                  <button id="dropDownDDI" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img id="ddi_atual_rev" src="https://gestormaster.top/img/country/br.png" /> <span>+55</span>
+                  </button>
+                  <div style="z-index:9999!important;" id="dropdown_ddi" class="dropdown-menu">
+                    <a onclick="changeDDI('55','br')" class="dropdown-item"><img id="ddi_55"
+                        src="https://gestormaster.top/img/country/br.png" /> +55</a>
+                    <a onclick="changeDDI('351','pt');" class="dropdown-item"><img id="ddi_351"
+                        src="https://gestormaster.top/img/country/pt.png" /> +351</a>
+                    <a onclick="changeDDI('1','usa');" class="dropdown-item"><img id="ddi_1"
+                        src="https://gestormaster.top/img/country/usa.png" /> +1</a>
+                    <a onclick="changeDDI('49','ger');" class="dropdown-item"><img id="ddi_49"
+                        src="https://gestormaster.top/img/country/ger.png" /> +49</a>
+                    <a onclick="changeDDI('54','arg');" class="dropdown-item"><img id="ddi_54"
+                        src="https://gestormaster.top/img/country/arg.png" /> +54</a>
+                    <a onclick="changeDDI('598','uru');" class="dropdown-item"><img id="ddi_598"
+                        src="https://gestormaster.top/img/country/uru.png" /> +598</a>
+                    <a onclick="changeDDI('44','gbr');" class="dropdown-item"><img id="ddi_44"
+                        src="https://gestormaster.top/img/country/gbr.png" /> +44</a>
+                    <a onclick="changeDDI('34','esp');" class="dropdown-item"><img id="ddi_34"
+                        src="https://gestormaster.top/img/country/esp.png" /> +34</a>
+                    <a onclick="changeDDI('1','can');" class="dropdown-item"><img id="ddi_1_can"
+                        src="https://gestormaster.top/img/country/can.png" /> +1</a>
+                    <a onclick="changeDDI('57','col');" class="dropdown-item"><img id="ddi_57"
+                        src="https://gestormaster.top/img/country/col.png" /> +57</a>
+                  </div>
+                  <input type="text" id="telefone_cli_edit" name="telefone_cli_edit" class="form-control"
+                    placeholder="Telefone" value="">
+                </div>
 
-          <div class="col-md-6 ">
-            <select class="form-control" name="categoria_cli_atual" id="categoria_cli_atual">
-              <option value="0">Selecionar uma categoria</option>
-              <?php if ($list_categorias_2) {
-                while ($cate = $list_categorias_2->fetch(PDO::FETCH_OBJ)) {
-                  ?>
-                  <option value="<?= $cate->id; ?>">
-                    <?= $cate->nome; ?>
+
+                <script>
+                  function changeDDI(ddi, country) {
+                    $("#ddi_cli_edit").val(ddi);
+                    $("#dropDownDDI").html('<img src="https://gestormaster.top/img/country/' + country + '.png" /> +' + ddi);
+                  }
+                </script>
+
+              </div>
+
+              <div class="col-md-6" style="float: right">
+                <label style="display: inline-block">Data de vencimento</label>
+                <input min="<?= date('Y-m-d'); ?>" type="date" class="form-control margin" id="vencimento_cli"
+                  placeholder="<?= $idioma->vencimento; ?>">
+              </div>
+
+              <div class="col-md-6" style="width: 100%;">
+                <select class="form-control" name="categoria_cli_atual" id="categoria_cli_atual">
+                  <option value="0">Selecionar uma categoria</option>
+                  <?php if ($list_categorias_2) {
+                    while ($cate = $list_categorias_2->fetch(PDO::FETCH_OBJ)) {
+                      ?>
+                      <option value="<?= $cate->id; ?>">
+                        <?= $cate->nome; ?>
+                      </option>
+                    <?php }
+                  } else { ?>
+                    <option value="0">Nenhuma categoria cadastrada</option>
+                  <?php } ?>
+                </select>
+                <small>Determine a categoria deste cliente</small>
+              </div>
+
+              <div class="col-md-12 margin">
+                <select class="form-control" name="recebe_zap_cli" id="recebe_zap_cli">
+                  <option value="1">
+                    <?= $idioma->notificas_via_zap; ?>
                   </option>
-                <?php }
-              } else { ?>
-                <option value="0">Nenhuma categoria cadastrada</option>
-              <?php } ?>
-            </select>
-            <small>Determine a categoria deste cliente</small>
-          </div>
+                  <option value="0">
+                    <?= $idioma->nao_notificar_zap; ?>
+                  </option>
+                </select>
+                <small>
+                  <?= $idioma->clientes_recebera_todos_mes_aviso; ?>
+                </small>
+              </div>
 
-          <!-- Input de editar -->
-          <!-- <div class="col-md-6">
-            <input type="text" class="form-control margin" maxlength="11" id="identificador_externo_cli"
-            placeholder="ID Externo [Opcional]">
-          </div> -->
-
-
-          <div class="col-md-12 margin">
-            <select class="form-control" name="recebe_zap_cli" id="recebe_zap_cli">
-              <option value="1">
-                <?= $idioma->notificas_via_zap; ?>
-              </option>
-              <option value="0">
-                <?= $idioma->nao_notificar_zap; ?>
-              </option>
-            </select>
-            <small>
-              <?= $idioma->clientes_recebera_todos_mes_aviso; ?>
-            </small>
-          </div>
-
-          <div class="col-md-12 margin">
-            <select class="form-control" name="plano_cli" id="plano_cli">
-              <option value="0">
-                <?= $idioma->selecionar_plano; ?>
-              </option>
-
-              <?php
-
-              if ($planos) {
-                while ($plano = $planos->fetch(PDO::FETCH_OBJ)) {
-
-                  ?>
-
-                  <option value="<?= $plano->id; ?>">
-                    <?= $plano->nome; ?>
+              <div class="col-md-12 margin">
+                <select class="form-control" name="plano_cli" id="plano_cli">
+                  <option value="0">
+                    <?= $idioma->selecionar_plano; ?>
                   </option>
 
-                <?php }
-              } else { ?>
+                  <?php
 
-                <option value="">
-                  <?= $idioma->nenhum_plano_cadastrado; ?>
-                </option>
+                  if ($planos) {
+                    while ($plano = $planos->fetch(PDO::FETCH_OBJ)) {
 
-              <?php } ?>
+                      ?>
+
+                      <option value="<?= $plano->id; ?>">
+                        <?= $plano->nome; ?>
+                      </option>
+
+                    <?php }
+                  } else { ?>
+
+                    <option value="">
+                      <?= $idioma->nenhum_plano_cadastrado; ?>
+                    </option>
+
+                  <?php } ?>
 
 
-            </select>
-          </div>
+                </select>
+              </div>
 
 
 
-          <div class="col-md-12 margin">
-            <?php if (@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na area
-                do
-                cliente</small>
-            <?php } ?>
-            <textarea name="notas" id="notas_cli" class="form-control" rows="3" cols="80"
-              placeholder="Observações para seu cliente."></textarea>
-          </div>
+              <div class="col-md-12 margin">
+                <?php if (@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na
+                    area
+                    do
+                    cliente</small>
+                <?php } ?>
+                <textarea name="notas" id="notas_cli" class="form-control" rows="3" cols="80"
+                  placeholder="Observações para seu cliente."></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  <?= $idioma->fechar; ?>
+                </button>
+                <button onclick="save_cli();" type="button" id="btn_save_cli" class="btn btn-primary">
+                  <?= $idioma->salvar; ?>
+                </button>
+              </div>
+            </div>
+
+
+
+
         </div>
-
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            <?= $idioma->fechar; ?>
-          </button>
-          <button onclick="save_cli();" type="button" id="btn_save_cli" class="btn btn-primary">
-            <?= $idioma->salvar; ?>
-          </button>
-        </div>
-
-
       </div>
     </div>
   </div>
 </div>
+
 
 
 <!--  Modal add clientes -->
@@ -934,13 +967,58 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
           <?php } ?>
 
           <div class="col-md-6">
-            <input type="text" class="form-control margin" id="telefone_cli_add" placeholder="DDI+DDD+NUM"
-              pattern="[0-9]+" inputmode="numeric" oninput="validarNumeros(this)">
-            <!-- <smal style="font-size:10px;color:gray;">
-                <b>Aviso:</b><a
-                href="https://kb.gestormaster.top/base-de-conhecimento/como-enviar-mensagens-automaticas-por-whatsapp/"
-                target="_blank">Tutorial</a>
-              </smal> -->
+
+            <div style="margin-bottom:20px; padding-left: 0px; padding-right: 0px;" class="input-group col-md-12">
+              <span style="height:10px!important;"></span>
+              <div class="input-group-append">
+                <input type="hidden" value="55" id="ddi_cli_add" />
+                <button id="desceDDI" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <img id="ddi_atual_rev" src="https://gestormaster.top/img/country/br.png" /> <span>+55</span>
+                </button>
+                <div style="z-index:9999!important;" id="dropdown_ddi" class="dropdown-menu">
+                  <a onclick="mudaDDI('55','br')" class="dropdown-item"><img id="ddi_55"
+                      src="https://gestormaster.top/img/country/br.png" /> +55</a>
+                  <a onclick="mudaDDI('351','pt');" class="dropdown-item"><img id="ddi_351"
+                      src="https://gestormaster.top/img/country/pt.png" /> +351</a>
+                  <a onclick="mudaDDI('1','usa');" class="dropdown-item"><img id="ddi_1"
+                      src="https://gestormaster.top/img/country/usa.png" /> +1</a>
+                  <a onclick="mudaDDI('49','ger');" class="dropdown-item"><img id="ddi_49"
+                      src="https://gestormaster.top/img/country/ger.png" /> +49</a>
+                  <a onclick="mudaDDI('54','arg');" class="dropdown-item"><img id="ddi_54"
+                      src="https://gestormaster.top/img/country/arg.png" /> +54</a>
+                  <a onclick="mudaDDI('598','uru');" class="dropdown-item"><img id="ddi_598"
+                      src="https://gestormaster.top/img/country/uru.png" /> +598</a>
+                  <a onclick="mudaDDI('44','gbr');" class="dropdown-item"><img id="ddi_44"
+                      src="https://gestormaster.top/img/country/gbr.png" /> +44</a>
+                  <a onclick="mudaDDI('34','esp');" class="dropdown-item"><img id="ddi_34"
+                      src="https://gestormaster.top/img/country/esp.png" /> +34</a>
+                  <a onclick="mudaDDI('1','can');" class="dropdown-item"><img id="ddi_1_can"
+                      src="https://gestormaster.top/img/country/can.png" /> +1</a>
+                  <a onclick="mudaDDI('57','col');" class="dropdown-item"><img id="ddi_57"
+                      src="https://gestormaster.top/img/country/col.png" /> +57</a>
+                </div>
+              </div>
+
+              <input type="text" id="telefone_cli_add" name="telefone_cli_add" class="form-control"
+                placeholder="Telefone" value="">
+
+
+
+              <script>
+                function mudaDDI(ddi, country) {
+                  $("#ddi_cli_add").val(ddi);
+                  $("#desceDDI").html('<img src="https://gestormaster.top/img/country/' + country + '.png" /> +' + ddi);
+                }
+              </script>
+
+              <!-- <input type="text" class="form-control margin" id="telefone_cli_add" placeholder="DDI+DDD+NUM"
+                pattern="[0-9]+" inputmode="numeric" oninput="validarNumeros(this)"> -->
+
+
+            </div>
+
+
           </div>
 
           <div class="col-md-6">
@@ -1024,7 +1102,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
           <div class="col-md-12 margin">
-            <?php if (@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na area
+            <?php if (@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na
+                area
                 do cliente</small>
             <?php } ?>
             <textarea name="notas" id="notas_cli_add" class="form-control" rows="3" cols="80"
@@ -1200,6 +1279,114 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
   </div>
 </div>
 
+<!--  Modal create faturas cliente -->
+<div class="modal fade" data-backdrop="static" id="modal_create_fat" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Titutlo_modal_fat_cli">
+          <?= $idioma->nova_fatura_cliente; ?>
+        </h5>
+      </div>
+      <div class="modal-body" id="body_modal_add_fat">
+
+        <input type="hidden" name="id_cli_new_fat" id="id_cli_new_fat" value="">
+        <input type="hidden" name="nome_cli_new_fat" id="nome_cli_new_fat" value="">
+        <input type="hidden" name="email_new_fat" id="email_new_fat" value="">
+
+        <div class="row">
+          <div style="margin-bottom:5px;" class="col-md-12 text-center">
+            <span id="response_msg"></span>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control" id="nome_cli_view" name="nome_cli_view" value="" disabled>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control" id="email_cli_view" name="email_cli_view" value="" disabled>
+            </div>
+          </div>
+          <div class="col-md-12 margin">
+            <div class="form-group">
+              <select onchange="busca_plano_fat();" class="form-control" name="plano_fat" id="plano_fat">
+                <option value="">
+                  <?= $idioma->selecionar_plano; ?>
+                </option>
+
+                <?php
+
+                if ($planos3) {
+                  while ($plano = $planos3->fetch(PDO::FETCH_OBJ)) {
+
+                    ?>
+
+                    <option value="<?= $plano->id; ?>">
+                      <?= $plano->nome; ?>
+                    </option>
+
+                  <?php }
+                } else { ?>
+
+                  <option value="">
+                    <?= $idioma->nenhum_plano_cadastrado; ?>
+                  </option>
+
+                <?php } ?>
+
+
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control" name="valor_fat" id="valor_fat_add" value="0,00">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="date" class="form-control" name="data_fat" id="data_fat_add" value="<?= date('Y-m-d'); ?>">
+            </div>
+          </div>
+          <div class="col-md-12 margin">
+            <select onchange="mostra_move();" class="form-control" name="status_fat" id="status_fat">
+              <option value="Pendente">
+                <?= $idioma->pendente; ?>
+              </option>
+              <option value="Pago">
+                <?= $idioma->pago; ?>
+              </option>
+              <option value="Rejeitado">
+                <?= $idioma->rejeitado; ?>
+              </option>
+              <option value="Devolvido">
+                <?= $idioma->devolvido; ?>
+              </option>
+            </select>
+          </div>
+          <div class="col-md-12 margin" id="div_move_fat" style="display:none;">
+            <div class="col-auto my-1">
+              <div class="custom-control custom-checkbox mr-sm-2">
+                <input value="1" type="checkbox" id="move_fatura" name="move_fatura" class="custom-control-input">
+                <label class="custom-control-label" for="move_fatura">Lançar no financeiro</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button onclick="cancel_new_fat();" type="button" class="btn btn-secondary" data-dismiss="modal">
+          <?= $idioma->cancelar; ?>
+        </button>
+        <button onclick="create_fat();" type="button" class="btn btn-primary">
+          <?= $idioma->criar; ?>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php if (@$plano_usergestor->faturas_cliente == 1) { ?>
   <!--  Modal faturas cliente -->
@@ -1230,8 +1417,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
               <div class="custom-control custom-checkbox mr-sm-2">
                 <input onclick="status_lanca_finan();" value="1" <?php if ($user->lancar_finan == 1) {
                   echo "checked";
-                } ?>
-                  type="checkbox" id="lancar_finan_status" name="lancar_finan_status" class="custom-control-input">
+                } ?> type="checkbox" id="lancar_finan_status" name="lancar_finan_status" class="custom-control-input">
                 <input type="hidden" id="status_lanca_finan" value="<?= $user->lancar_finan; ?>" />
                 <label class="custom-control-label" for="lancar_finan_status">Lançamento automático financeiro</label>
               </div>
@@ -1252,8 +1438,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
               <div class="custom-control custom-checkbox mr-sm-2">
                 <input onclick="status_gera_fat_cli();" value="1" <?php if ($user->gera_fat_cli == 1) {
                   echo "checked";
-                } ?>
-                  type="checkbox" id="gera_fat_cli" name="gera_fat_cli" class="custom-control-input">
+                } ?> type="checkbox" id="gera_fat_cli" name="gera_fat_cli" class="custom-control-input">
                 <input type="hidden" id="status_gera_fat_cli" value="<?= $user->gera_fat_cli; ?>" />
                 <label class="custom-control-label" for="gera_fat_cli">Gerar faturas automáticas</label>
               </div>
@@ -1299,174 +1484,59 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
     </div>
   </div>
 
-  <div class="modal fade" id="modal_export_cli" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="titutlo_modal_export_financeiro">Escolha o formato do arquivo</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" id="body_modal_export_financeiro">
+<?php } ?>
 
-          <form class="" action="../control/control.export_clientes.php" id="form_export" method="post">
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <select class="form-control" name="type_export" id="type_export">
-                    <option value="xls">Exportar em excel (xls)</option>
-                    <option value="json">Exportar em JSON</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-12">
-                <div class="form-group">
-                  <button onclick="$('#form_export').submit();" id="btn_export_dados_financeiros" style="width:100%;"
-                    type="button" class="btn btn-primary" name="button">Exportar</button>
-                </div>
-              </div>
-            </div>
-
-          </form>
-
-        </div>
+<div class="modal fade" id="modal_export_cli" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titutlo_modal_export_financeiro">Escolha o formato do arquivo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
+      <div class="modal-body" id="body_modal_export_financeiro">
 
-    <!--  Modal create faturas cliente -->
-    <div class="modal fade " data-backdrop="static" id="modal_create_fat" tabindex="-1" role="dialog"
-      aria-labelledby="Titutlo_modal_del_cliente" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Titutlo_modal_fat_cli">
-              <?= $idioma->nova_fatura_cliente; ?>
-            </h5>
-          </div>
-          <div class="modal-body" id="body_modal_add_fat">
+        <form class="" action="../control/control.export_clientes.php" id="form_export" method="post">
 
-            <input type="hidden" name="id_cli_new_fat" id="id_cli_new_fat" value="">
-            <input type="hidden" name="nome_cli_new_fat" id="nome_cli_new_fat" value="">
-            <input type="hidden" name="email_new_fat" id="email_new_fat" value="">
-
-            <div class="row">
-              <div style="margin-bottom:5px;" class="col-md-12 text-center">
-                <span id="response_msg"></span>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="nome_cli_view" name="nome_cli_view" value="" disabled>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="email_cli_view" name="email_cli_view" value="" disabled>
-                </div>
-              </div>
-              <div class="col-md-12 margin">
-                <div class="form-group">
-                  <select onchange="busca_plano_fat();" class="form-control" name="plano_fat" id="plano_fat">
-                    <option value="">
-                      <?= $idioma->selecionar_plano; ?>
-                    </option>
-
-                    <?php
-
-                    if ($planos3) {
-                      while ($plano = $planos3->fetch(PDO::FETCH_OBJ)) {
-
-                        ?>
-
-                        <option value="<?= $plano->id; ?>">
-                          <?= $plano->nome; ?>
-                        </option>
-
-                      <?php }
-                    } else { ?>
-
-                      <option value="">
-                        <?= $idioma->nenhum_plano_cadastrado; ?>
-                      </option>
-
-                    <?php } ?>
-
-
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="valor_fat" id="valor_fat_add" value="0,00">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="date" class="form-control" name="data_fat" id="data_fat_add" value="<?= date('Y-m-d'); ?>">
-                </div>
-              </div>
-              <div class="col-md-12 margin">
-                <select onchange="mostra_move();" class="form-control" name="status_fat" id="status_fat">
-                  <option value="Pendente">
-                    <?= $idioma->pendente; ?>
-                  </option>
-                  <option value="Pago">
-                    <?= $idioma->pago; ?>
-                  </option>
-                  <option value="Rejeitado">
-                    <?= $idioma->rejeitado; ?>
-                  </option>
-                  <option value="Devolvido">
-                    <?= $idioma->devolvido; ?>
-                  </option>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <select class="form-control" name="type_export" id="type_export">
+                  <option value="xls">Exportar em excel (xls)</option>
+                  <option value="json">Exportar em JSON</option>
                 </select>
               </div>
-              <div class="col-md-12 margin" id="div_move_fat" style="display:none;">
-                <div class="col-auto my-1">
-                  <div class="custom-control custom-checkbox mr-sm-2">
-                    <input value="1" type="checkbox" id="move_fatura" name="move_fatura" class="custom-control-input">
-                    <label class="custom-control-label" for="move_fatura">Lançar no financeiro</label>
-                  </div>
-                </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <button onclick="$('#form_export').submit();" id="btn_export_dados_financeiros" style="width:100%;"
+                  type="button" class="btn btn-primary" name="button">Exportar</button>
               </div>
             </div>
           </div>
 
-          <div class="modal-footer">
-            <button onclick="cancel_new_fat();" type="button" class="btn btn-secondary" data-dismiss="modal">
-              <?= $idioma->cancelar; ?>
-            </button>
-            <button onclick="create_fat();" type="button" class="btn btn-primary">
-              <?= $idioma->criar; ?>
-            </button>
-          </div>
-        </div>
+        </form>
+
       </div>
     </div>
+  </div>
 
-
-    <script>
-
-
-
-      function status_gera_fat_cli() {
-        var a = $("#status_gera_fat_cli").val();
-        $.post("../control/control.status_create_fat_vencimento.php", {
-          status: a
-        }, function (a) {
-          var objResGerarFat = JSON.parse(a);
-          $("#status_gera_fat_cli").val(objResGerarFat.statusRes);
-        })
-      }
-    </script>
-
-  <?php } ?>
 
 
   <script>
+
+    function status_gera_fat_cli() {
+      var a = $("#status_gera_fat_cli").val();
+      $.post("../control/control.status_create_fat_vencimento.php", {
+        status: a
+      }, function (a) {
+        var objResGerarFat = JSON.parse(a);
+        $("#status_gera_fat_cli").val(objResGerarFat.statusRes);
+      })
+    }
 
     function save_name_categoria(id) {
       var name = $("#input_categoria_" + id).val();
@@ -1671,6 +1741,22 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
       });
 
 
+    }
+
+    function modal_create_fat() {
+      $("#modal_fat_cli").modal("toggle");
+      $("#modal_create_fat").modal("show");
+      console.log("Função modal_create_fat() chamada com sucesso!");
+      var a = $("#id_cli_fat").val(),
+        e = $("#nome_cli_fat").val(),
+        o = $("#email_cli_fat").val();
+      o == "" ? $("#email_cli_view").val("[sem email]") : $("#email_cli_view").val(o);
+      $("#id_cli_new_fat").val(a);
+      $("#nome_cli_view").val(e);
+      $("#nome_cli_new_fat").val(e);
+      $("#email_new_fat").val(o);
+      $("#div_move_fat").hide(100);
+      $("#move_fatura").prop("checked", !1);
     }
   </script>
 
