@@ -10,7 +10,7 @@
 
         $dados = json_decode($_POST['dados']);
 
-      if($dados->nome != "" && $dados->vencimento != "" && $dados->telefone != "" && $dados->notas != "" && $dados->id_plano != ""){
+      if($dados->nome != "" && $dados->vencimento != "" && $dados->telefone != "" && $dados->id_plano != ""){
 
         require_once '../class/Conn.class.php';
         require_once '../class/Clientes.class.php';
@@ -46,7 +46,7 @@
                     $dados->email = $dados->email;
                 }else{
                     $json->erro = true;
-                    $json->msg  = "Um cliente com este mesmo email foi encontrado.";
+                    $json->msg  = "Email já cadastrado.";
                     echo json_encode($json);
                 }
                 

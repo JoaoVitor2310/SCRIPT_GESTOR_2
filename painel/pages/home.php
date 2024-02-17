@@ -141,9 +141,13 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
       <div class="col-md-12 border-bottom" style="padding-bottom:5px;">
         <div class="row">
           <div class="col-md-4">
-            <div class="btn-group mr-2">
+            <div class="btn-group">
               <button onclick="list_categorias_cards();$('#modal_categorias').modal();" type="button"
                 class="btn btn-sm btn-outline-secondary"><i class="fa fa-users"></i> Categorias</button>
+            </div>
+            <div class="btn-group">
+              <button onclick="$('#modal_disparo').modal();" type="button" class="btn btn-sm btn-outline-secondary"><i
+                  class="fa fa-users"></i> Disparo de mensagem</button>
             </div>
           </div>
           <div class="col-md-8">
@@ -765,140 +769,140 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
 
 
-            <div class="col-md-12">
+          <div class="col-md-12">
 
-              <div style="margin-bottom:20px; padding-left: 0px; padding-right: 0px; display: block;"
-                class="input-group col-md-12">
-                <span style="height:10px!important;"></span>
-                <div class="input-group-append">
-                  <input type="hidden" value="55" id="ddi_cli_edit" />
-                  <button id="dropDownDDI" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <img id="ddi_atual_rev" src="https://gestormaster.top/img/country/br.png" /> <span>+55</span>
-                  </button>
-                  <div style="z-index:9999!important;" id="dropdown_ddi" class="dropdown-menu">
-                    <a onclick="changeDDI('55','br')" class="dropdown-item"><img id="ddi_55"
-                        src="https://gestormaster.top/img/country/br.png" /> +55</a>
-                    <a onclick="changeDDI('351','pt');" class="dropdown-item"><img id="ddi_351"
-                        src="https://gestormaster.top/img/country/pt.png" /> +351</a>
-                    <a onclick="changeDDI('1','usa');" class="dropdown-item"><img id="ddi_1"
-                        src="https://gestormaster.top/img/country/usa.png" /> +1</a>
-                    <a onclick="changeDDI('49','ger');" class="dropdown-item"><img id="ddi_49"
-                        src="https://gestormaster.top/img/country/ger.png" /> +49</a>
-                    <a onclick="changeDDI('54','arg');" class="dropdown-item"><img id="ddi_54"
-                        src="https://gestormaster.top/img/country/arg.png" /> +54</a>
-                    <a onclick="changeDDI('598','uru');" class="dropdown-item"><img id="ddi_598"
-                        src="https://gestormaster.top/img/country/uru.png" /> +598</a>
-                    <a onclick="changeDDI('44','gbr');" class="dropdown-item"><img id="ddi_44"
-                        src="https://gestormaster.top/img/country/gbr.png" /> +44</a>
-                    <a onclick="changeDDI('34','esp');" class="dropdown-item"><img id="ddi_34"
-                        src="https://gestormaster.top/img/country/esp.png" /> +34</a>
-                    <a onclick="changeDDI('1','can');" class="dropdown-item"><img id="ddi_1_can"
-                        src="https://gestormaster.top/img/country/can.png" /> +1</a>
-                    <a onclick="changeDDI('57','col');" class="dropdown-item"><img id="ddi_57"
-                        src="https://gestormaster.top/img/country/col.png" /> +57</a>
-                  </div>
-                  <input type="text" id="telefone_cli_edit" name="telefone_cli_edit" class="form-control"
-                    placeholder="Telefone" value="">
+            <div style="margin-bottom:20px; padding-left: 0px; padding-right: 0px; display: block;"
+              class="input-group col-md-12">
+              <span style="height:10px!important;"></span>
+              <div class="input-group-append">
+                <input type="hidden" value="55" id="ddi_cli_edit" />
+                <button id="dropDownDDI" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <img id="ddi_atual_rev" src="https://gestormaster.top/img/country/br.png" /> <span>+55</span>
+                </button>
+                <div style="z-index:9999!important;" id="dropdown_ddi" class="dropdown-menu">
+                  <a onclick="changeDDI('55','br')" class="dropdown-item"><img id="ddi_55"
+                      src="https://gestormaster.top/img/country/br.png" /> +55</a>
+                  <a onclick="changeDDI('351','pt');" class="dropdown-item"><img id="ddi_351"
+                      src="https://gestormaster.top/img/country/pt.png" /> +351</a>
+                  <a onclick="changeDDI('1','usa');" class="dropdown-item"><img id="ddi_1"
+                      src="https://gestormaster.top/img/country/usa.png" /> +1</a>
+                  <a onclick="changeDDI('49','ger');" class="dropdown-item"><img id="ddi_49"
+                      src="https://gestormaster.top/img/country/ger.png" /> +49</a>
+                  <a onclick="changeDDI('54','arg');" class="dropdown-item"><img id="ddi_54"
+                      src="https://gestormaster.top/img/country/arg.png" /> +54</a>
+                  <a onclick="changeDDI('598','uru');" class="dropdown-item"><img id="ddi_598"
+                      src="https://gestormaster.top/img/country/uru.png" /> +598</a>
+                  <a onclick="changeDDI('44','gbr');" class="dropdown-item"><img id="ddi_44"
+                      src="https://gestormaster.top/img/country/gbr.png" /> +44</a>
+                  <a onclick="changeDDI('34','esp');" class="dropdown-item"><img id="ddi_34"
+                      src="https://gestormaster.top/img/country/esp.png" /> +34</a>
+                  <a onclick="changeDDI('1','can');" class="dropdown-item"><img id="ddi_1_can"
+                      src="https://gestormaster.top/img/country/can.png" /> +1</a>
+                  <a onclick="changeDDI('57','col');" class="dropdown-item"><img id="ddi_57"
+                      src="https://gestormaster.top/img/country/col.png" /> +57</a>
                 </div>
-
-
-                <script>
-                  function changeDDI(ddi, country) {
-                    $("#ddi_cli_edit").val(ddi);
-                    $("#dropDownDDI").html('<img src="https://gestormaster.top/img/country/' + country + '.png" /> +' + ddi);
-                  }
-                </script>
-
+                <input type="text" id="telefone_cli_edit" name="telefone_cli_edit" class="form-control"
+                  placeholder="Telefone" value="">
               </div>
 
-              <div class="col-md-6" style="float: right">
-                <label style="display: inline-block">Data de vencimento</label>
-                <input min="<?= date('Y-m-d'); ?>" type="date" class="form-control margin" id="vencimento_cli"
-                  placeholder="<?= $idioma->vencimento; ?>">
-              </div>
 
-              <div class="col-md-6" style="width: 100%;">
-                <select class="form-control" name="categoria_cli_atual" id="categoria_cli_atual">
-                  <option value="0">Selecionar uma categoria</option>
-                  <?php if ($list_categorias_2) {
-                    while ($cate = $list_categorias_2->fetch(PDO::FETCH_OBJ)) {
-                      ?>
-                      <option value="<?= $cate->id; ?>">
-                        <?= $cate->nome; ?>
-                      </option>
-                    <?php }
-                  } else { ?>
-                    <option value="0">Nenhuma categoria cadastrada</option>
-                  <?php } ?>
-                </select>
-                <small>Determine a categoria deste cliente</small>
-              </div>
+              <script>
+                function changeDDI(ddi, country) {
+                  $("#ddi_cli_edit").val(ddi);
+                  $("#dropDownDDI").html('<img src="https://gestormaster.top/img/country/' + country + '.png" /> +' + ddi);
+                }
+              </script>
 
-              <div class="col-md-12 margin">
-                <select class="form-control" name="recebe_zap_cli" id="recebe_zap_cli">
-                  <option value="1">
-                    <?= $idioma->notificas_via_zap; ?>
-                  </option>
-                  <option value="0">
-                    <?= $idioma->nao_notificar_zap; ?>
-                  </option>
-                </select>
-                <small>
-                  <?= $idioma->clientes_recebera_todos_mes_aviso; ?>
-                </small>
-              </div>
+            </div>
 
-              <div class="col-md-12 margin">
-                <select class="form-control" name="plano_cli" id="plano_cli">
-                  <option value="0">
-                    <?= $idioma->selecionar_plano; ?>
-                  </option>
+            <div class="col-md-6">
+              <label style="display: inline-block">Data de vencimento</label>
+              <input min="<?= date('Y-m-d'); ?>" type="date" style="margin-left: 0px" class="form-control margin" id="vencimento_cli"
+                placeholder="<?= $idioma->vencimento; ?>">
+            </div>
 
-                  <?php
+            <div class="col-md-6" style="width: 100%;">
+              <select class="form-control" name="categoria_cli_atual" id="categoria_cli_atual">
+                <option value="0">Selecionar uma categoria</option>
+                <?php if ($list_categorias_2) {
+                  while ($cate = $list_categorias_2->fetch(PDO::FETCH_OBJ)) {
+                    ?>
+                    <option value="<?= $cate->id; ?>">
+                      <?= $cate->nome; ?>
+                    </option>
+                  <?php }
+                } else { ?>
+                  <option value="0">Nenhuma categoria cadastrada</option>
+                <?php } ?>
+              </select>
+              <small>Determine a categoria deste cliente</small>
+            </div>
 
-                  if ($planos) {
-                    while ($plano = $planos->fetch(PDO::FETCH_OBJ)) {
+            <div class="col-md-12 margin">
+              <select class="form-control" name="recebe_zap_cli" id="recebe_zap_cli">
+                <option value="1">
+                  <?= $idioma->notificas_via_zap; ?>
+                </option>
+                <option value="0">
+                  <?= $idioma->nao_notificar_zap; ?>
+                </option>
+              </select>
+              <small>
+                <?= $idioma->clientes_recebera_todos_mes_aviso; ?>
+              </small>
+            </div>
 
-                      ?>
+            <div class="col-md-12 margin">
+              <select class="form-control" name="plano_cli" id="plano_cli">
+                <option value="0">
+                  <?= $idioma->selecionar_plano; ?>
+                </option>
 
-                      <option value="<?= $plano->id; ?>">
-                        <?= $plano->nome; ?>
-                      </option>
+                <?php
 
-                    <?php }
-                  } else { ?>
+                if ($planos) {
+                  while ($plano = $planos->fetch(PDO::FETCH_OBJ)) {
 
-                    <option value="">
-                      <?= $idioma->nenhum_plano_cadastrado; ?>
+                    ?>
+
+                    <option value="<?= $plano->id; ?>">
+                      <?= $plano->nome; ?>
                     </option>
 
-                  <?php } ?>
+                  <?php }
+                } else { ?>
 
+                  <option value="">
+                    <?= $idioma->nenhum_plano_cadastrado; ?>
+                  </option>
 
-                </select>
-              </div>
-
-
-
-              <div class="col-md-12 margin">
-                <?php if (@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na
-                    area
-                    do
-                    cliente</small>
                 <?php } ?>
-                <textarea name="notas" id="notas_cli" class="form-control" rows="3" cols="80"
-                  placeholder="Observações para seu cliente."></textarea>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                  <?= $idioma->fechar; ?>
-                </button>
-                <button onclick="save_cli();" type="button" id="btn_save_cli" class="btn btn-primary">
-                  <?= $idioma->salvar; ?>
-                </button>
-              </div>
+
+
+              </select>
             </div>
+
+
+
+            <div class="col-md-12 margin">
+              <?php if (@$plano_usergestor->mini_area_cliente == 1) { ?><small>Isso ira aparecer para seu cliente na
+                  area
+                  do
+                  cliente</small>
+              <?php } ?>
+              <textarea name="notas" id="notas_cli" class="form-control" rows="3" cols="80"
+                placeholder="Observações para seu cliente."></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <?= $idioma->fechar; ?>
+              </button>
+              <button onclick="save_cli();" type="button" id="btn_save_cli" class="btn btn-primary">
+                <?= $idioma->salvar; ?>
+              </button>
+            </div>
+          </div>
 
 
 
@@ -1165,7 +1169,6 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
               <div class="form-group">
                 <textarea data-emojiable="true" data-emoji-input="unicode" placeholder="Texto da mensagem"
                   class="emoji-wysiwyg-editor form-control textarea-control" rows="10" id="texto_to"></textarea>
-
               </div>
             </div>
 
@@ -1274,6 +1277,49 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
         </div>
 
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal disparo de mensagem para inadimplentes -->
+<div class="modal fade" id="modal_disparo" tabindex="-1" role="dialog" aria-labelledby="modal_disparo"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="Titutlo_modal_del_cliente">Disparo de mensagem para clientes inadimplentes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="body_modal_categorias">
+        <p><strong>ATENÇÃO:</strong> Ao realizar o envio de um grande número de mensagens, seu Whatsapp pode ser
+          bloqueado ou <span style="color: red;">banido</span>, use essa ferramenta com moderação.
+        </p>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="alert alert-danger" id="msg_return_categoria" style="display:none;"></p>
+          </div>
+          <div class="col-md-12">
+            <textarea data-emojiable="true" data-emoji-input="unicode"
+              placeholder="Texto da mensagem para clientes inadimplentes"
+              class="emoji-wysiwyg-editor2 form-control textarea-control" rows="10" id="text"></textarea>
+          </div>
+          <!-- <div class="col-md-2 border-bottom">
+            <button onclick="" id="btn_add_categoria" class="btn btn-outline-secondary btn-sm"
+              style="width:100%;"> <i class="fa fa-plus"></i> Enviar mensagem para todos </button>
+          </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <?= $idioma->fechar; ?>
+          </button>
+          <button type="button" onclick="send_disparo();" class="btn btn-success" id="btn_send_disparo"
+            data-dismiss="modal">
+            Enviar
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1692,16 +1738,31 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
       });
     }
 
-    // $('#modal_send_zap').on('hide.bs.modal', function (event) {
+    function send_disparo() {
 
-    //   $("#form_send_zap").hide();
-    //   $("#btn_send_zap").hide();
-    //   $("#msg_send_zap_aguarde").show('100');
+      $("#btn_send_disparo").prop('disabled', true);
+      $("#btn_send_disparo").html('Aguarde <i class="fa fa-refresh fa-spin" ></i>');
 
-    //   $("#msg_send_zap_aguarde").html('<h4>Aguarde <i class="fa fa-refresh fa-spin"></i></h4>');
-    // })
+      var text = $("textarea.emoji-wysiwyg-editor2").val();
 
+      // console.log(text);
 
+      $.post('../control/control.send_disparo.php', { text }, function (data) {
+        var ResJson = JSON.parse(data);
+        console.log(ResJson);
+
+        if (ResJson.erro == false) {
+          alert('Sua mensagem foi adicionada na fila e será enviada!');
+          location.href = "";
+          $("#btn_send_disparo").html('Enviado');
+        } else {
+          alert(ResJson.msg);
+          location.href = "";
+          $("#btn_send_disparo").html('Tente novamente.');
+        }
+        $("#btn_send_disparo").prop('disabled', false);
+      });
+    }
 
     function modal_send_zap(id_cli, nome_cli, tel_cli, plano) {
 

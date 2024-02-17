@@ -3,7 +3,7 @@
 @session_start();
 set_time_limit(3000);
 
-require_once '../class/Conn.class.php'; // Não precisa iniciar uma classe conn
+require_once '../class/Conn.class.php';
 
 require_once '../class/Whatsapi.class.php';
 $whatsapi_c = new Whatsapi();
