@@ -1759,7 +1759,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
           alert(ResJson.msg);
           location.href = "";
           $("#btn_send_disparo").html('Tente novamente.');
-        }
+        };
         $("#btn_send_disparo").prop('disabled', false);
       });
     }

@@ -48,14 +48,12 @@ if (isset($_POST['text'])) {
             $query->execute();
             $listaVencidos = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
-            // $plano = $planos_c->plano(9509);
-            // echo json_encode(['erro' => false, 'plano' => $plano]);
-            // die;
-
             // echo json_encode(['erro' => false, 'listaVencidos' => $listaVencidos]);
             // die;
             
+            // echo json_encode(['erro' => true, 'listaVencidos' => $listaVencidos]);
+            // die;
+
             $data = date('d/m/Y');
             $data_timestamp = strtotime(str_replace('/', '-', $data));
             
@@ -84,11 +82,10 @@ if (isset($_POST['text'])) {
                         
                         
                         $whatsapi_c->fila($phone, $texto, $idAtual, $device_id, 'ZAPI', '0000', '0000');
-                        echo json_encode(['erro' => false, 'msg' => 'Enviado']);
-                        die;
-
                     }
                 }
+                echo json_encode(['erro' => false, 'msg' => 'Enviado']);
+                die;
             } else {
                 echo json_encode(['erro' => true, 'msg' => 'A lista de vencidos está vazia.']);
                 die;
