@@ -1460,13 +1460,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                   class="fa fa-plus"></i> Nova Fatura</button>
             </div>
             <div class="col-auto my-1">
-              <div class="custom-control custom-checkbox mr-sm-2">
-                <input onclick="status_lanca_finan();" value="1" <?php if ($user->lancar_finan == 1) {
-                  echo "checked";
-                } ?> type="checkbox" id="lancar_finan_status" name="lancar_finan_status" class="custom-control-input">
-                <input type="hidden" id="status_lanca_finan" value="<?= $user->lancar_finan; ?>" />
-                <label class="custom-control-label" for="lancar_finan_status">Lançamento automático financeiro</label>
-              </div>
+              
               <div class="custom-control custom-checkbox mr-sm-2">
                 <input onclick="status_vencimento_flex();" value="1" <?php if ($user->vencimento_flex == 1) {
                   echo "checked";
@@ -1480,15 +1474,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                 </a> -->
               </div>
             </div>
-            <div class="col-auto my-1">
-              <div class="custom-control custom-checkbox mr-sm-2">
-                <input onclick="status_gera_fat_cli();" value="1" <?php if ($user->gera_fat_cli == 1) {
-                  echo "checked";
-                } ?> type="checkbox" id="gera_fat_cli" name="gera_fat_cli" class="custom-control-input">
-                <input type="hidden" id="status_gera_fat_cli" value="<?= $user->gera_fat_cli; ?>" />
-                <label class="custom-control-label" for="gera_fat_cli">Gerar faturas automáticas</label>
-              </div>
-            </div>
+            
           </div>
           <table class="table">
             <span id="response_msg_fat_"></span>
