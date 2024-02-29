@@ -818,8 +818,8 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
 
             <div class="col-md-6">
               <label style="display: inline-block">Data de vencimento</label>
-              <input min="<?= date('Y-m-d'); ?>" type="date" style="margin-left: 0px" class="form-control margin" id="vencimento_cli"
-                placeholder="<?= $idioma->vencimento; ?>">
+              <input min="<?= date('Y-m-d'); ?>" type="date" style="margin-left: 0px" class="form-control margin"
+                id="vencimento_cli" placeholder="<?= $idioma->vencimento; ?>">
             </div>
 
             <div class="col-md-6" style="width: 100%;">
@@ -1460,7 +1460,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                   class="fa fa-plus"></i> Nova Fatura</button>
             </div>
             <div class="col-auto my-1">
-              
+
               <div class="custom-control custom-checkbox mr-sm-2">
                 <input onclick="status_vencimento_flex();" value="1" <?php if ($user->vencimento_flex == 1) {
                   echo "checked";
@@ -1474,7 +1474,7 @@ $array_clis_comp = $clientes_class->list_fats_comp($_SESSION['SESSION_USER']['id
                 </a> -->
               </div>
             </div>
-            
+
           </div>
           <table class="table">
             <span id="response_msg_fat_"></span>

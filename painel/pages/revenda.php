@@ -192,6 +192,10 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
         <h5>Usu√°rios adicionados por revenda</h5>
         <input style="border-radius: 0px!important;" type="text" id="busca_revenda" placeholder="Pesquisar"
           class="form-control" name="" value="">
+          <button style="height: 38px;" class="btn btn-sm btn-outline-secondary" id="btn_inativo"
+            onclick="$('#btn_ativo').show();$('#btn_inativo').hide();$('.ativo').hide();$('.inativo').show();">Inadimplentes</button>
+          <button class="btn btn-sm btn-outline-secondary" style="height: 38px;display:none;" id="btn_ativo"
+            onclick="$('#btn_inativo').show();$('#btn_ativo').hide();$('.inativo').hide();$('.ativo').show();">Ativos</button>
       </div>
     </div>
     <div class="table-responsive">
@@ -228,6 +232,8 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
                 $dataVen = $explodeData[2] . $explodeData[1] . $explodeData[0];
                 $dataHoje = $explodeData2[2] . $explodeData2[1] . $explodeData2[0];
 
+
+
                 if ($dataVen == $dataHoje) {
                   $ven = "<b class='badge badge-warning'>{$rev->vencimento}</b>";
                 } else if ($dataHoje > $dataVen) {
@@ -241,10 +247,11 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
                 $ven = "<b class='badge badge-secondary'>{$rev->vencimento}</b>";
               }
 
+              // echo 'dataVen:' + $dataVen;
               ?>
 
 
-              <tr class="trs ">
+              <tr class="trs <?php echo (strtotime($dataHoje) > strtotime($dataVen)) ? 'inativo' : 'ativo'; ?>">
                 <td>
                   <?= $rev->id; ?>
                 </td>
@@ -547,7 +554,7 @@ if ($parceiro == '0' && $id_revendedor == '0') { // Cadastrado pelo site, n√£o √
             </div>
             <div class="form-group">
               <select class="form-control" id="planoTeste" name="planoTeste">
-              <option value="test">Teste gr√°tis</option>
+                <option value="test">Teste gr√°tis</option>
               </select>
             </div>
           </div>
