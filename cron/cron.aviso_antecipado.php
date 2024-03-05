@@ -46,12 +46,12 @@ if ($list_users) {
         $arrayDiasVencimento = array_map('intval', str_split((string) $user->dias_aviso_antecipado));
         $diaDeAviso = false;
 
-        
+
         if (is_array($arrayDiasVencimento) && count($arrayDiasVencimento) > 1) {
           for ($i = 0; $i < count($arrayDiasVencimento); $i++) {
-            if($arrayDiasVencimento[$i] == 9){ // 1 dia após
+            if ($arrayDiasVencimento[$i] == 9) { // 1 dia após
               $data = date('d/m/Y', strtotime('+1 day', strtotime($data_format)));
-            }else{
+            } else {
               $data = date('d/m/Y', strtotime('-' . $arrayDiasVencimento[$i] . ' days', strtotime($data_format)));
             }
             if ($data == date('d/m/Y')) { // Compara pra saber se hj é dia de aviso
@@ -78,7 +78,7 @@ if ($list_users) {
 
 
           if ($user->gera_fat_cli == 1) {
-            echo "Entrou no if da data user->gera_fat_cli == 1 <br>";
+            echo "Entrou no if user->gera_fat_cli == 1 <br>";
 
             $new_fat_cli = array();
             $new_fat_cli['id_plano'] = $plano->id;
@@ -90,6 +90,8 @@ if ($list_users) {
 
             $clientes_class->create_fat((object) $new_fat_cli);
 
+            // echo "new_fat_cli = " + $new_fat_cli;
+            // echo "<br>";
 
           }
 
