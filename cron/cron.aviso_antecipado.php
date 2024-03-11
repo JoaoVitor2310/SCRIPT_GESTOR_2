@@ -57,7 +57,7 @@ if ($list_users) {
             if ($data == date('d/m/Y')) { // Compara pra saber se hj é dia de aviso
               $diaDeAviso = true;
             }
-            echo 'dia de aviso: ' . $data;
+            echo 'dia de aviso: ' . $data . '<br>';
           }
           ;
         } else {
@@ -76,8 +76,9 @@ if ($list_users) {
           echo "cliente->id_plano {$cliente->id_plano} <br>";
           $plano = $planos_class->plano($cliente->id_plano);
 
+          $hora_atual = date("H:i");
 
-          if ($user->gera_fat_cli == 1) {
+          if ($user->gera_fat_cli == 1 && $hora_atual == "00:00") {
             echo "Entrou no if user->gera_fat_cli == 1 <br>";
 
             $new_fat_cli = array();
@@ -89,10 +90,6 @@ if ($list_users) {
             $new_fat_cli['ref'] = sha1(date('d/m/Y H:i:s'));
 
             $clientes_class->create_fat((object) $new_fat_cli);
-
-            // echo "new_fat_cli = " + $new_fat_cli;
-            // echo "<br>";
-
           }
 
           $link_plano = 'https://gestormaster.top/gmaster/p/' . str_replace('=', '', base64_encode($plano->id));

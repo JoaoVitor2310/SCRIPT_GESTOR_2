@@ -25,17 +25,17 @@ if ($list_users) {
     // $moeda = $financeiro_class->getmoeda($user->moeda);
     $moeda = 'BRL';
     echo "moeda: {$moeda} <br>";
-    
+
     $plano = $gestor_class->plano($user->id_plano);
     // echo "plano: {$plano} <br>"; // Quebrando o código!
-    
+
     $create_fat = $faturas_class->create($plano, $user, @$moeda);
     echo "create_fat: {$create_fat} <br>";
-    
+
     //Jay11
     //Desabilitado pq tava banindo os números do zap
     // $tema = $whatsapi_class->get_template('faturas');
-    
+
     // if ($tema) {
     //   echo "entrou no if tema <br>";
 
